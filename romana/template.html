@@ -101,6 +101,7 @@ details.gram summary { cursor: pointer; font-weight: 500; }
 .forms .v { font-family: var(--font-ro); font-size: 16px; overflow-wrap: anywhere; color: var(--muted); }
 .forms .v b { color: var(--hl); font-weight: 600; }
 .note { font-size: 13px; color: var(--muted); }
+.note .past { font-family: var(--font-ro); font-size: 15px; color: var(--hl); }
 .acts { display: flex; gap: 6px; }
 .acts .btn { padding: 4px 10px; font-size: 13px; }
 @media (max-width: 560px) {
@@ -123,7 +124,7 @@ details.gram summary { cursor: pointer; font-weight: 500; }
 <div class="wrap">
   <header>
     <h1>루마니아어 단어장</h1>
-    <p><span class="src">Limba română — manual pentru studenții străini</span> · 1–5과 (교재 p.13–51)</p>
+    <p><span class="src">Limba română — manual pentru studenții străini</span> · <span id="range">1–9과</span></p>
   </header>
 
   <details class="gram" id="gram">
@@ -253,7 +254,7 @@ const G_NAME = { m: "m 남성", f: "f 여성", n: "n 중성" };
 const base = [];
 DATA.nouns.forEach((r, i) => base.push({ id: "n" + i, type: "noun", ro: r[0], g: r[1], forms: [r[0], r[2], r[3], r[4]], ko: r[5], lesson: r[6], note: r[7] }));
 DATA.adjs.forEach((r, i) => base.push({ id: "a" + i, type: "adj", ro: r[0] !== "—" ? r[0] : r[2], forms: [r[0], r[1], r[2], r[3]], ko: r[4], lesson: r[5], note: r[6] }));
-DATA.verbs.forEach((r, i) => base.push({ id: "v" + i, type: "verb", ro: r[0], forms: r[1], ko: r[2], lesson: r[3], note: r[4] }));
+DATA.verbs.forEach((r, i) => base.push({ id: "v" + i, type: "verb", ro: r[0], forms: r[1], ko: r[2], lesson: r[3], note: r[4], part: r[5] }));
 DATA.other.forEach((r, i) => base.push({ id: "o" + i, type: "other", ro: r[0], ko: r[1], cat: r[2], lesson: r[3] }));
 
 let mine = [];
@@ -287,7 +288,7 @@ function filtered() {
     if (state.lesson !== "all" && state.lesson !== "mine" && String(it.lesson) !== String(state.lesson)) return false;
     if (state.tab === "noun" && state.genders.size && !state.genders.has(it.g)) return false;
     if (q) {
-      const hay = fold([it.ro, it.ko, it.note, it.cat].concat(it.forms || []).join(" "));
+      const hay = fold([it.ro, it.ko, it.note, it.cat, it.part].concat(it.forms || []).join(" "));
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -324,7 +325,8 @@ function itemHtml(it) {
     forms = `<div class="forms${it.type === "verb" ? " six" : ""}">` + labels.map((k, i) =>
       `<div><span class="k">${k}</span><span class="v">${it.type === "verb" ? esc(it.forms[i] || "—") : hl(ref, it.forms[i])}</span></div>`).join("") + "</div>";
   }
-  const note = it.note ? `<div class="note">${esc(it.note)}</div>` : "";
+  const past = it.type === "verb" && it.part ? `<div class="note">과거 (perfect compus): am <b class="past">${esc(it.part)}</b></div>` : "";
+  const note = past + (it.note ? `<div class="note">${esc(it.note)}</div>` : "");
   const acts = it.mine ? `<div class="acts"><button class="btn" type="button" data-edit="${esc(it.id)}">수정</button><button class="btn danger" type="button" data-del="${esc(it.id)}">삭제</button></div>` : "";
   return `<article class="item${it.mine ? " mine" : ""}" data-id="${esc(it.id)}">
     <div class="head"><span class="ro" lang="ro">${esc(it.ro)}</span>${badge}<span class="ko">${esc(it.ko)}</span>${meta}</div>
@@ -370,7 +372,7 @@ $("list").addEventListener("click", (e) => {
 function fieldDefs(type) {
   if (type === "noun") return [["단수 (사전형)", "ex: scaun"], ["복수", "ex: scaune"], ["단수 + 정관사", "ex: scaunul"], ["복수 + 정관사", "ex: scaunele"]];
   if (type === "adj") return [["남·중 단수", "ex: frumos"], ["여 단수", "ex: frumoasă"], ["남 복수", "ex: frumoși"], ["여·중 복수", "ex: frumoase"]];
-  if (type === "verb") return [["부정사", "ex: a citi"], ["eu", ""], ["tu", ""], ["el / ea", ""], ["noi", ""], ["voi", ""], ["ei / ele", ""]];
+  if (type === "verb") return [["부정사", "ex: a citi"], ["eu", ""], ["tu", ""], ["el / ea", ""], ["noi", ""], ["voi", ""], ["ei / ele", ""], ["과거분사", "ex: citit"]];
   return [["단어 / 표현", "ex: încă"]];
 }
 function buildFields(values) {
@@ -391,7 +393,7 @@ function openPanel(item) {
   $("f-cat").value = item && item.cat ? item.cat : "";
   $("f-ko").value = item ? item.ko || "" : "";
   $("f-note").value = item ? item.note || "" : "";
-  const vals = item ? (item.type === "verb" ? [item.ro].concat(item.forms || []) : item.type === "other" ? [item.ro] : item.forms) : null;
+  const vals = item ? (item.type === "verb" ? [item.ro].concat(item.forms || [], [item.part || ""]) : item.type === "other" ? [item.ro] : item.forms) : null;
   buildFields(vals);
   $("saveStatus").textContent = "";
   $("panel").hidden = false;
@@ -432,7 +434,7 @@ $("saveBtn").addEventListener("click", async () => {
   const doc = { type, ko: $("f-ko").value.trim(), note: $("f-note").value.trim(), lesson: lessonRaw === "" ? null : (isNaN(+lessonRaw) ? lessonRaw : +lessonRaw), updatedAt: Date.now() };
   if (type === "noun") { doc.ro = vals[0]; doc.g = $("f-g").value; doc.forms = vals.map((v) => v || "—"); }
   else if (type === "adj") { doc.ro = vals[0]; doc.forms = vals.map((v) => v || "—"); }
-  else if (type === "verb") { doc.ro = vals[0]; doc.forms = vals.slice(1).map((v) => v || "—"); }
+  else if (type === "verb") { doc.ro = vals[0]; doc.forms = vals.slice(1, 7).map((v) => v || "—"); doc.part = vals[7] || ""; }
   else { doc.ro = vals[0]; doc.cat = $("f-cat").value.trim() || "기타"; }
   if (!col) { $("saveStatus").textContent = "저장소에 연결되지 않았어요. claude.ai에 로그인한 상태에서 다시 열어 주세요."; return; }
   $("saveBtn").disabled = true; $("saveStatus").textContent = "저장 중…";

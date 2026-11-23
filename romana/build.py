@@ -9,15 +9,16 @@ from pathlib import Path
 here = Path(__file__).parent
 data = json.loads((here / "vocab.json").read_text(encoding="utf-8"))
 
+lessons = sorted({r[6] for r in data["nouns"]} | {r[5] for r in data["adjs"]} | {r[3] for r in data["verbs"]})
+
 # 1) index.html
 tpl = (here / "template.html").read_text(encoding="utf-8")
 payload = json.dumps({k: v for k, v in data.items() if not k.startswith("_")}, ensure_ascii=False, separators=(",", ":"))
-(here / "index.html").write_text(tpl.replace("/*__DATA__*/null", payload), encoding="utf-8")
+(here / "index.html").write_text(tpl.replace("/*__DATA__*/null", payload).replace('<span id="range">1–9과</span>', f'<span id="range">{lessons[0]}–{lessons[-1]}과</span>'), encoding="utf-8")
 
 # 2) 단어장.md
 G = {"m": "남성", "f": "여성", "n": "중성"}
-lessons = sorted({r[6] for r in data["nouns"]} | {r[5] for r in data["adjs"]} | {r[3] for r in data["verbs"]})
-out = ["# 루마니아어 단어장 (Limba română, 1–5과)", "",
+out = [f"# 루마니아어 단어장 (Limba română, {lessons[0]}–{lessons[-1]}과)", "",
        "성: **m** 남성 · **f** 여성 · **n** 중성. 굵은 글씨는 사전형에서 바뀌는 부분.", ""]
 
 
@@ -46,9 +47,9 @@ for l in lessons:
             out.append(f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]} | {r[6]} |")
     verbs = [r for r in data["verbs"] if r[3] == l]
     if verbs:
-        out += ["", "### 동사 (현재형)", "", "| 부정사 | eu | tu | el/ea | noi | voi | ei/ele | 뜻 |", "|---|---|---|---|---|---|---|---|"]
+        out += ["", "### 동사 (현재형)", "", "| 부정사 | eu | tu | el/ea | noi | voi | ei/ele | 과거분사 | 뜻 |", "|---|---|---|---|---|---|---|---|---|"]
         for r in verbs:
-            out.append(f"| {r[0]} | " + " | ".join(r[1]) + f" | {r[2]} |")
+            out.append(f"| {r[0]} | " + " | ".join(r[1]) + f" | {r[5] if len(r) > 5 else ''} | {r[2]} |")
     out.append("")
 
 out += ["## 기타 (대명사·의문사·부사·전치사·숫자 등)", "", "| 단어 | 뜻 | 분류 | 과 |", "|---|---|---|---|"]

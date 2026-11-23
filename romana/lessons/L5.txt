@@ -1,0 +1,38 @@
+# 5과 O zi de lucru (p.51-60)
+N|ceas|n|ceasuri|시계; 시각|Cât e ceasul? 몇 시예요?
+N|sfert|n|sferturi|15분; 4분의 1|zece și un sfert 10시 15분
+N|secundă|f|secunde|초
+N|clipă|f|clipe|순간, 잠깐
+N|moment|n|momente|순간
+N|sărbătoare|f|sărbători|명절, 공휴일|zi de sărbătoare
+N|odihnă|f|—|휴식|zi de odihnă 쉬는 날
+N|bluză|f|bluze|블라우스
+N|după-masă|f|după-mese|오후 (= după-amiază)
+V|a fugi|fug fugi fuge fugim fugiți fug|fugit|달리다, 도망가다|= a alerga
+V|a sui|sui sui suie suim suiți suie|suit|오르다|= a urca
+V|a vinde|vând vinzi vinde vindem vindeți vând|vândut|팔다|↔ a cumpăra
+V|a tăcea|tac taci tace tăcem tăceți tac|tăcut|조용히 하다
+V|a citi|citesc citești citește citim citiți citesc|citit|읽다
+V|a hotărî|hotărăsc hotărăști hotărăște hotărâm hotărâți hotărăsc|hotărât|결정하다
+V|a lucra|lucrez lucrezi lucrează lucrăm lucrați lucrează|lucrat|일하다
+V|a afla|aflu afli află aflăm aflați află|aflat|알게 되다
+V|a umple|umplu umpli umple umplem umpleți umplu|umplut|채우다
+V|a vrea|vreau vrei vrea vrem vreți vor|vrut|원하다
+V|a înota|înot înoți înoată înotăm înotați înoată|înotat|수영하다|o → oa
+V|a încerca|încerc încerci încearcă încercăm încercați încearcă|încercat|시도하다|e → ea
+V|a întreba|întreb întrebi întreabă întrebăm întrebați întreabă|întrebat|묻다|↔ a răspunde
+V|a omorî|omor omori omoară omorâm omorâți omoară|omorât|죽이다|o → oa
+V|a număra|număr numeri numără numărăm numărați numără|numărat|세다
+V|a cădea|cad cazi cade cădem cădeți cad|căzut|떨어지다
+V|a apărea|apar apari apare apărem apăreți apar|apărut|나타나다
+V|a spăla|spăl speli spală spălăm spălați spală|spălat|씻다, 빨다
+V|a pune|pun pui pune punem puneți pun|pus|놓다, 두다
+V|a spune|spun spui spune spunem spuneți spun|spus|말하다
+O|alaltăieri|그저께|부사
+O|poimâine|모레|부사
+O|târziu|늦게|부사
+O|înainte de|~전에|전치사
+O|după ce|~한 후에|접속사
+O|fără|~없이; (시각) ~분 전|전치사
+O|Cât e ceasul?|몇 시예요?|표현
+O|la ce oră|몇 시에|표현

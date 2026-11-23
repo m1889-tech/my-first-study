@@ -1,0 +1,155 @@
+# 8과 La cantină 구내식당에서 (p.74-83)
+N|salam|n|salamuri|살라미
+N|cașcaval|n|cașcavaluri|노란 치즈 (카슈카발)
+N|brânză|f|brânzeturi|치즈
+N|unt|n|—|버터
+N|gem|n|gemuri|잼
+N|supă|f|supe|수프
+N|ciorbă|f|ciorbe|초르바 (시큼한 수프)
+N|friptură|f|fripturi|구운 고기, 스테이크
+N|sarma|f|sarmale|사르말레 (양배추 롤)|보통 복수
+N|chiftea|f|chiftele|미트볼|-ea → -ele
+N|șnițel|n|șnițele|커틀릿
+N|salată|f|salate|샐러드; 상추|salată verde 그린 샐러드
+N|roșie|f|roșii|토마토
+N|vânătă|f|vinete|가지|salată de vinete 가지 샐러드
+N|sare|f|—|소금|보통 단수만 (화학 복수 săruri)
+N|oțet|n|oțeturi|식초
+N|piper|n|—|후추
+N|muștar|n|—|겨자
+N|prăjitură|f|prăjituri|케이크, 과자
+N|înghețată|f|înghețate|아이스크림
+N|fruct|n|fructe|과일
+N|compot|n|compoturi|과일 절임 (음료)
+N|băutură|f|băuturi|음료
+N|vin|n|vinuri|와인
+N|țuică|f|țuici|추이카 (자두 브랜디)
+N|rachiu|n|rachiuri|증류주
+N|bere|f|beri|맥주
+N|coniac|n|coniacuri|코냑
+N|apă|f|ape|물|apă minerală 생수
+N|sifon|n|sifoane|탄산수
+N|sirop|n|siropuri|시럽
+N|suc|n|sucuri|주스|suc de fructe
+N|lapte|n|—|우유
+N|prună|f|prune|자두
+N|nucă|f|nuci|호두
+N|vișină|f|vișine|신 체리
+N|caisă|f|caise|살구
+N|piersică|f|piersici|복숭아
+N|cireașă|f|cireșe|체리|ea → e
+N|căpșună|f|căpșuni|딸기
+N|strugure|m|struguri|포도
+N|pepene|m|pepeni|수박, 멜론
+N|legumă|f|legume|채소
+N|cartof|m|cartofi|감자|cartofi prăjiți 감자튀김
+N|ceapă|f|cepe|양파
+N|morcov|m|morcovi|당근
+N|ardei|m|ardei|피망, 고추|단수=복수
+N|castravete|m|castraveți|오이
+N|ridiche|f|ridichi|무
+N|fasole|f|—|콩
+N|mazăre|f|—|완두콩
+N|varză|f|verze|양배추
+N|spanac|n|—|시금치
+N|bucătărie|f|bucătării|부엌; 요리
+N|farfurie|f|farfurii|접시
+N|pahar|n|pahare|컵, 잔
+N|cană|f|căni|머그잔; 물병
+N|ceașcă|f|cești|찻잔|불규칙 복수
+N|cuțit|n|cuțite|칼
+N|furculiță|f|furculițe|포크
+N|lingură|f|linguri|숟가락
+N|linguriță|f|lingurițe|티스푼
+N|solniță|f|solnițe|소금통
+N|sticlă|f|sticle|병; 유리
+N|borcan|n|borcane|유리병 (잼병)
+N|scobitoare|f|scobitori|이쑤시개
+N|oală|f|oale|냄비
+N|ibric|n|ibrice|(커피) 주전자
+N|strecurătoare|f|strecurători|체, 거름망
+N|tacâm|n|tacâmuri|수저 세트
+N|coș|n|coșuri|바구니
+N|fel|n|feluri|(코스) 요리; 종류|felul doi 두 번째 요리
+N|porc|m|porci|돼지|friptură de porc 돼지고기 구이
+N|mămăligă|f|mămăligi|마말리가 (옥수수죽)
+N|desert|n|deserturi|디저트
+N|vitamină|f|vitamine|비타민
+N|glumă|f|glume|농담
+N|poftă|f|pofte|식욕|Poftă bună! 맛있게 드세요
+N|porție|f|porții|1인분
+N|aperitiv|n|aperitive|전채, 식전주
+N|carne|f|—|고기|보통 단수만 (복수 cărnuri 드묾)
+N|iarbă|f|ierburi|풀, 잔디
+N|picior|n|picioare|다리, 발|în picioare 서서
+N|explicație|f|explicații|설명
+N|examen|n|examene|시험|a da examen 시험 보다
+N|mână|f|mâini|손|a da mâna 악수하다
+N|valiză|f|valize|여행 가방
+N|început|n|începuturi|시작|la început 처음에
+N|vază|f|vaze|꽃병
+N|pachet|n|pachete|소포, 꾸러미
+N|săpun|n|săpunuri|비누
+N|rufă|f|rufe|빨래 (주로 복수)
+N|prânz|n|prânzuri|점심
+N|ou|n|ouă|달걀|ouă fierte 삶은 달걀||ouăle
+N|sos|n|sosuri|소스
+N|felie|f|felii|조각, 슬라이스
+N|șuncă|f|șunci|햄
+N|chelner|m|chelneri|웨이터
+N|șervețel|n|șervețele|냅킨
+N|listă|f|liste|목록, 메뉴
+N|pateu|n|pateuri|파테
+N|pește|m|pești|생선
+N|mititel|m|mititei|미티테이 (구운 다진 고기)|보통 복수
+N|vacă|f|vaci|암소|friptură de vacă 소고기 구이
+N|grătar|n|grătare|그릴|la grătar 그릴에 구운
+N|garnitură|f|garnituri|곁들임
+N|ochi (ou)|n|ochiuri|달걀 프라이|눈(eye)은 m. ochi|ochiul|ochiurile
+N|miere|f|—|꿀
+N|dejun|n|dejunuri|식사|micul dejun 아침 식사
+N|musafir|m|musafiri|손님
+N|mare|f|mări|바다|la mare 바다에
+A|verde|verde|verzi|verzi|초록의|2형태
+A|prăjit|prăjită|prăjiți|prăjite|튀긴, 볶은
+A|mineral|minerală|minerali|minerale|광물의|apă minerală 생수
+A|excelent|excelentă|excelenți|excelente|훌륭한
+A|bolnav|bolnavă|bolnavi|bolnave|아픈
+A|cald|caldă|calzi|calde|따뜻한|↔ rece
+A|rece|rece|reci|reci|차가운|2형태
+A|românesc|românească|românești|românești|루마니아의
+A|fiert|fiartă|fierți|fierte|삶은
+V|a lua|iau iei ia luăm luați iau|luat|가져가다; 타다; 먹다|a lua masa 식사하다
+V|a bea|beau bei bea bem beți beau|băut|마시다
+V|a mânca|mănânc mănânci mănâncă mâncăm mâncați mănâncă|mâncat|먹다
+V|a sta|stau stai stă stăm stați stau|stat|머물다; 앉다; 서 있다|a sta de vorbă 이야기하다
+V|a da|dau dai dă dăm dați dau|dat|주다|a da telefon 전화하다
+V|a întârzia|întârzii întârzii întârzie întârziem întârziați întârzie|întârziat|늦다
+V|a tăia|tai tai taie tăiem tăiați taie|tăiat|자르다
+V|a turna|torn torni toarnă turnăm turnați toarnă|turnat|따르다, 붓다
+V|a prefera|prefer preferi preferă preferăm preferați preferă|preferat|선호하다
+V|a pofti|poftesc poftești poftește poftim poftiți poftesc|poftit|청하다, 원하다|Poftiți la masă! 식사하세요
+V|a coace|coc coci coace coacem coaceți coc|copt|(빵을) 굽다
+V|a frige|frig frigi frige frigem frigeți frig|fript|(고기를) 굽다
+V|a rupe|rup rupi rupe rupem rupeți rup|rupt|찢다
+V|a fierbe|fierb fierbi fierbe fierbem fierbeți fierb|fiert|끓이다, 삶다
+V|a sparge|sparg spargi sparge spargem spargeți sparg|spart|깨뜨리다
+V|a cere|cer ceri cere cerem cereți cer|cerut|요청하다
+V|a bate|bat bați bate batem bateți bat|bătut|치다, 두드리다
+V|a întoarce|întorc întorci întoarce întoarcem întoarceți întorc|întors|돌리다; (se) 돌아오다
+V|a scoate|scot scoți scoate scoatem scoateți scot|scos|꺼내다
+V|a crește|cresc crești crește creștem creșteți cresc|crescut|자라다
+V|a naște|nasc naști naște naștem nașteți nasc|născut|낳다
+O|ca|~로서; ~처럼|전치사
+O|cum|어떻게|의문사
+O|într-adevăr|정말로|부사
+O|peste|(시간) ~후에; ~위로|전치사
+O|înapoi|뒤로; 되돌려|부사
+O|afară|밖에|부사
+O|cu plăcere|기꺼이; 천만에요|표현
+O|așa|그렇게|부사
+O|nu-i așa?|그렇지 않아요?|표현
+O|la alegere|골라서|표현
+O|mereu|늘|부사
+O|de obicei|보통|부사
+O|prin|~을 통해; 여기저기|전치사

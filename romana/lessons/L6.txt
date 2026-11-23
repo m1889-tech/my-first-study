@@ -1,0 +1,85 @@
+# 6과 Ce facem astăzi? (p.61-68)
+N|laborator|n|laboratoare|실험실
+N|program|n|programe|일정, 프로그램
+N|articol|n|articole|기사; (문법) 관사
+N|notiță|f|notițe|메모, 필기
+N|scrisoare|f|scrisori|편지|oa → o
+N|lucrare|f|lucrări|과제물, 논문
+N|revistă|f|reviste|잡지
+N|cititor|m|cititori|독자, 도서관 이용자
+N|cititoare|f|cititoare|독자 (여)
+N|text|n|texte|텍스트, 본문
+N|titlu|n|titluri|제목
+N|fișă|f|fișe|(도서) 신청 카드
+N|bibliotecar|m|bibliotecari|사서 (남)
+N|bibliotecară|f|bibliotecare|사서 (여)
+N|fișier|n|fișiere|카드 목록함
+N|permis|n|permise|출입증; 면허|permis de bibliotecă
+N|cotă|f|cote|청구기호
+N|autor|m|autori|저자
+N|fabrică|f|fabrici|공장
+N|război|n|războaie|전쟁
+N|spital|n|spitale|병원
+N|ziar|n|ziare|신문
+N|servietă|f|serviete|서류가방
+N|aeroport|n|aeroporturi|공항
+N|spectacol|n|spectacole|공연
+N|balcon|n|balcoane|발코니
+N|haină|f|haine|옷; 외투
+N|teză|f|teze|논문|teză de doctorat 박사논문
+N|telefon|n|telefoane|전화
+A|necesar|necesară|necesari|necesare|필요한
+A|punctual|punctuală|punctuali|punctuale|시간을 지키는
+A|atent|atentă|atenți|atente|주의 깊은
+A|corect|corectă|corecți|corecte|올바른
+A|complet|completă|compleți|complete|완전한
+A|clar|clară|clari|clare|분명한
+A|acesta|aceasta|aceștia|acestea|이 (명사 뒤) / 이것|autorul acesta
+A|ăsta|asta|ăștia|astea|이 / 이거 (구어)
+V|a corecta|corectez corectezi corectează corectăm corectați corectează|corectat|고치다
+V|a copia|copiez copiezi copiază copiem copiați copiază|copiat|베끼다
+V|a scrie|scriu scrii scrie scriem scrieți scriu|scris|쓰다
+V|a studia|studiez studiezi studiază studiem studiați studiază|studiat|공부하다
+V|a pregăti|pregătesc pregătești pregătește pregătim pregătiți pregătesc|pregătit|준비하다
+V|a întâlni|întâlnesc întâlnești întâlnește întâlnim întâlniți întâlnesc|întâlnit|만나다
+V|a traduce|traduc traduci traduce traducem traduceți traduc|tradus|번역하다
+V|a nota|notez notezi notează notăm notați notează|notat|적다, 메모하다
+V|a căuta|caut cauți caută căutăm căutați caută|căutat|찾다|↔ a găsi
+V|a crede|cred crezi crede credem credeți cred|crezut|믿다, 생각하다
+V|a găsi|găsesc găsești găsește găsim găsiți găsesc|găsit|찾아내다
+V|a primi|primesc primești primește primim primiți primesc|primit|받다|↔ a trimite
+V|a putea|pot poți poate putem puteți pot|putut|~할 수 있다|a putea + 부정사
+V|a vizita|vizitez vizitezi vizitează vizităm vizitați vizitează|vizitat|방문하다
+V|a ști|știu știi știe știm știți știu|știut|알다
+V|a vorbi|vorbesc vorbești vorbește vorbim vorbiți vorbesc|vorbit|말하다
+V|a telefona|telefonez telefonezi telefonează telefonăm telefonați telefonează|telefonat|전화하다
+V|a completa|completez completezi completează completăm completați completează|completat|(서식을) 작성하다
+V|a iscăli|iscălesc iscălești iscălește iscălim iscăliți iscălesc|iscălit|서명하다
+V|a răspunde|răspund răspunzi răspunde răspundem răspundeți răspund|răspuns|대답하다
+V|a greși|greșesc greșești greșește greșim greșiți greșesc|greșit|틀리다|↔ a corecta
+V|a trimite|trimit trimiți trimite trimitem trimiteți trimit|trimis|보내다
+V|a urî|urăsc urăști urăște urâm urâți urăsc|urât|미워하다
+V|a locui|locuiesc locuiești locuiește locuim locuiți locuiesc|locuit|살다, 거주하다
+V|a construi|construiesc construiești construiește construim construiți construiesc|construit|짓다, 건설하다
+V|a adăuga|adaug adaugi adaugă adăugăm adăugați adaugă|adăugat|더하다
+V|a îmbrăca|îmbrac îmbraci îmbracă îmbrăcăm îmbrăcați îmbracă|îmbrăcat|입히다; (se) 옷을 입다
+V|a lăsa|las lași lasă lăsăm lăsați lasă|lăsat|두다, 남기다
+V|a sosi|sosesc sosești sosește sosim sosiți sosesc|sosit|도착하다|= a ajunge
+V|a arăta|arăt arăți arată arătăm arătați arată|arătat|보여주다
+V|a aduce|aduc aduci aduce aducem aduceți aduc|adus|가져오다
+O|a avea nevoie de|~이 필요하다|표현
+O|apoi|그다음에|부사
+O|pe urmă|나중에|부사
+O|după aceea|그 후에|부사
+O|desigur|물론|부사
+O|sigur (că)|확실히|부사
+O|firește|당연히|부사
+O|bineînțeles|물론|부사
+O|De acord.|동의해요, 좋아요|표현
+O|Poftim!|여기 있어요 / 뭐라고요?|표현
+O|poate (că)|아마|부사
+O|Vă rog.|부탁합니다|표현
+O|mai ales|특히|부사
+O|că|~라고 (접속사)|접속사
+O|dacă|만약; ~인지|접속사
+O|despre|~에 대해|전치사

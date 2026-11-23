@@ -1,0 +1,58 @@
+# 9과 O excursie la Sinaia (p.84-90)
+N|excursie|f|excursii|소풍, 여행
+N|aer|n|—|공기|aer curat 맑은 공기
+N|pădure|f|păduri|숲
+N|acoperiș|n|acoperișuri|지붕
+N|poartă|f|porți|대문|oa → o
+N|compartiment|n|compartimente|(기차) 칸
+N|partidă|f|partide|(경기) 판|o partidă de șah
+N|liceu|n|licee|고등학교
+N|serviciu|n|servicii|직장; 서비스
+N|amiază|f|amiezi|정오|la amiază 정오에
+N|cabană|f|cabane|산장
+N|doctor|m|doctori|의사
+N|sfârșit|n|sfârșituri|끝|la sfârșit 마지막에
+A|lung|lungă|lungi|lungi|긴|↔ scurt (3형태)
+A|larg|largă|largi|largi|넓은|↔ îngust (3형태)
+A|mic|mică|mici|mici|작은|↔ mare (3형태)
+A|mare|mare|mari|mari|큰|2형태
+A|vechi|veche|vechi|vechi|오래된|↔ nou
+A|nou|nouă|noi|noi|새로운|3형태
+A|roșu|roșie|roșii|roșii|빨간|3형태
+A|gri|gri|gri|gri|회색의|1형태
+A|maro|maro|maro|maro|갈색의|1형태
+A|bej|bej|bej|bej|베이지색의|1형태
+A|bleu|bleu|bleu|bleu|하늘색의|1형태
+A|bleumarin|bleumarin|bleumarin|bleumarin|남색의|1형태
+A|roz|roz|roz|roz|분홍색의|1형태
+A|scurt|scurtă|scurți|scurte|짧은
+A|îngust|îngustă|înguști|înguste|좁은
+A|strâmt|strâmtă|strâmți|strâmte|(옷이) 꽉 끼는
+A|gros|groasă|groși|groase|두꺼운|↔ subțire
+A|subțire|subțire|subțiri|subțiri|얇은|2형태
+A|tare|tare|tari|tari|단단한; 강한|↔ moale
+A|moale|moale|moi|moi|부드러운
+A|dulce|dulce|dulci|dulci|단|↔ amar
+A|amar|amară|amari|amare|쓴
+A|acru|acră|acri|acre|신
+A|bătrân|bătrână|bătrâni|bătrâne|늙은|↔ tânăr
+A|singur|singură|singuri|singure|혼자인
+A|fierbinte|fierbinte|fierbinți|fierbinți|뜨거운|2형태
+A|încântat|încântată|încântați|încântate|기쁜, 반가운
+A|minunat|minunată|minunați|minunate|멋진
+A|plăcut|plăcută|plăcuți|plăcute|즐거운, 쾌적한
+A|acel|acea|acei|acele|저, 그 (명사 앞)|원칭 지시사
+A|acela|aceea|aceia|acelea|저, 그 (명사 뒤) / 저것|textul acela
+V|a glumi|glumesc glumești glumește glumim glumiți glumesc|glumit|농담하다
+V|a râde|râd râzi râde râdem râdeți râd|râs|웃다
+V|a zice|zic zici zice zicem ziceți zic|zis|말하다
+V|a petrece|petrec petreci petrece petrecem petreceți petrec|petrecut|(시간을) 보내다
+O|mine|나 (전치사 뒤)|인칭대명사
+O|tine|너 (전치사 뒤)|인칭대명사
+O|în jur|주위에|부사
+O|prea|너무|부사
+O|nu prea|별로 ~않은|부사
+O|cam|대략|부사
+O|aproximativ|대략|부사
+O|spre seară|저녁 무렵|표현
+O|numai|오직, ~만|부사
