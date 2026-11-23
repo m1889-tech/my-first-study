@@ -1,0 +1,482 @@
+<title>루마니아어 단어장</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column; sticky control bar; each word is a row with its forms laid out as a small inflection grid. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #1b2230;
+  --muted: #5b6478;
+  --line: #dde1e9;
+  --accent: #2446c8;
+  --accent-soft: #e6ebfb;
+  --m: #1f63c6; --m-soft: #e3edfb;
+  --f: #c2335f; --f-soft: #fbe6ed;
+  --n: #1f8459; --n-soft: #e2f3ea;
+  --hl: #1b2230;
+  --font-ro: "Literata", "Georgia", "Times New Roman", serif;
+  --font-ui: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161e; --surface: #1a202b; --ink: #e7eaf1; --muted: #9aa3b6; --line: #2b3342;
+    --accent: #8aa2ff; --accent-soft: #232c45;
+    --m: #7fb0ff; --m-soft: #1d2b44; --f: #ff8db0; --f-soft: #3a1f2a; --n: #6fd3a3; --n-soft: #173326;
+    --hl: #ffffff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161e; --surface: #1a202b; --ink: #e7eaf1; --muted: #9aa3b6; --line: #2b3342;
+  --accent: #8aa2ff; --accent-soft: #232c45;
+  --m: #7fb0ff; --m-soft: #1d2b44; --f: #ff8db0; --f-soft: #3a1f2a; --n: #6fd3a3; --n-soft: #173326;
+  --hl: #ffffff; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 28px 64px; display: grid; gap: 18px; }
+header h1 { font-family: var(--font-ro); font-weight: 600; font-size: clamp(26px, 5vw, 36px); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+header .src { font-family: var(--font-ro); font-style: italic; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; display: grid; gap: 10px; border-bottom: 1px solid var(--line); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 3px; overflow-x: auto; }
+.tabs button { border: 0; background: transparent; color: var(--muted); font: 500 14px var(--font-ui); padding: 7px 12px; border-radius: 7px; cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--surface); }
+.tabs .cnt { font-size: 12px; opacity: .8; margin-left: 3px; font-variant-numeric: tabular-nums; }
+input[type="search"], .fields input, .fields select {
+  font: 15px var(--font-ui); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0;
+}
+input[type="search"] { flex: 1 1 200px; }
+.chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 13px var(--font-ui); padding: 4px 10px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.g-m[aria-pressed="true"] { background: var(--m); border-color: var(--m); color: var(--surface); }
+.chip.g-f[aria-pressed="true"] { background: var(--f); border-color: var(--f); color: var(--surface); }
+.chip.g-n[aria-pressed="true"] { background: var(--n); border-color: var(--n); color: var(--surface); }
+.lbl { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.btn { font: 500 14px var(--font-ui); border-radius: 8px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn.danger { color: var(--f); }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.spacer { flex: 1; }
+
+details.gram { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+details.gram summary { cursor: pointer; font-weight: 500; }
+.gram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 12px; }
+.gram h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); font-weight: 500; }
+.tbl-wrap { overflow-x: auto; }
+.gram table { border-collapse: collapse; font-size: 14px; width: 100%; }
+.gram th, .gram td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; }
+.gram th { font-weight: 500; color: var(--muted); font-size: 12px; }
+.gram td { font-family: var(--font-ro); }
+.gram p { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+.status { font-size: 13px; color: var(--muted); }
+.list { display: grid; gap: 8px; }
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; }
+.item.mine { border-style: dashed; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.ro { font-family: var(--font-ro); font-size: 21px; font-weight: 600; line-height: 1.2; }
+.g { font: 700 11px var(--font-ui); padding: 2px 7px; border-radius: 5px; letter-spacing: .03em; }
+.g.m { color: var(--m); background: var(--m-soft); }
+.g.f { color: var(--f); background: var(--f-soft); }
+.g.n { color: var(--n); background: var(--n-soft); }
+.g.x { color: var(--muted); background: var(--bg); }
+.ko { color: var(--ink); flex: 1 1 160px; min-width: 0; }
+.hide-ko .ko { color: transparent; background: var(--bg); border-radius: 4px; cursor: pointer; user-select: none; }
+.hide-ko .item.show .ko { color: var(--ink); background: transparent; }
+.meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.forms { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.forms.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.forms > div { background: var(--surface); padding: 5px 8px; min-width: 0; }
+.forms .k { display: block; font-size: 11px; color: var(--muted); }
+.forms .v { font-family: var(--font-ro); font-size: 16px; overflow-wrap: anywhere; color: var(--muted); }
+.forms .v b { color: var(--hl); font-weight: 600; }
+.note { font-size: 13px; color: var(--muted); }
+.acts { display: flex; gap: 6px; }
+.acts .btn { padding: 4px 10px; font-size: 13px; }
+@media (max-width: 560px) {
+  .bar { position: static; }
+  .forms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .forms.six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.empty { text-align: center; color: var(--muted); padding: 32px 8px; }
+
+.panel { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
+.panel h2 { margin: 0; font-size: 17px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.fields label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); min-width: 0; }
+.fields input, .fields select { width: 100%; }
+.fields input.ro-in { font-family: var(--font-ro); }
+.hint { font-size: 12px; color: var(--muted); margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>루마니아어 단어장</h1>
+    <p><span class="src">Limba română — manual pentru studenții străini</span> · 1–5과 (교재 p.13–51)</p>
+  </header>
+
+  <details class="gram" id="gram">
+    <summary>성·수 변화 한눈에 보기 (교재 문법표 요약)</summary>
+    <div class="gram-grid">
+      <div>
+        <h3>복수 어미</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th>남성 m</th><th>중성 n</th><th>여성 f</th></tr>
+          <tr><td>-i</td><td>-uri / -e / -i</td><td>-e / -i / -le</td></tr>
+        </table></div>
+        <p>중성 = 단수는 남성처럼(un, doi는 아님), 복수는 여성처럼(două).</p>
+      </div>
+      <div>
+        <h3>수사와 성</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m</th><th>n</th><th>f</th></tr>
+          <tr><th>1</th><td>un</td><td>un</td><td>o</td></tr>
+          <tr><th>2</th><td>doi</td><td>două</td><td>două</td></tr>
+        </table></div>
+        <p>20 이상은 de: douăzeci de studenți.</p>
+      </div>
+      <div>
+        <h3>정관사 (명사 뒤에 붙음)</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m / n</th><th>f</th></tr>
+          <tr><th>단수</th><td>-(u)l, -le</td><td>-a, -(u)a</td></tr>
+          <tr><th>복수</th><td>m -i · n -le</td><td>-le</td></tr>
+        </table></div>
+        <p>student → studentul, casă → casa, carte → cartea, șosea → șoseaua</p>
+      </div>
+      <div>
+        <h3>형용사 4형태</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m</th><th>n</th><th>f</th></tr>
+          <tr><th>단수</th><td colspan="2">-Ø, -u</td><td>-ă</td></tr>
+          <tr><th>복수</th><td>-i</td><td colspan="2">-e</td></tr>
+        </table></div>
+        <p>명사 뒤에 옴: un student român</p>
+      </div>
+    </div>
+  </details>
+
+  <div class="bar">
+    <div class="row">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <span class="spacer"></span>
+      <button class="btn primary" id="addBtn" type="button">+ 단어 추가</button>
+    </div>
+    <div class="row">
+      <input type="search" id="q" placeholder="검색: 루마니아어 또는 한국어 (ă·ș 없이도 됨)" autocomplete="off">
+      <button class="chip" id="hideKo" type="button" aria-pressed="false">뜻 가리기</button>
+    </div>
+    <div class="row" id="lessonRow"></div>
+    <div class="row" id="genderRow"></div>
+  </div>
+
+  <section class="panel" id="panel" hidden>
+    <h2 id="panelTitle">단어 추가</h2>
+    <div class="fields">
+      <label>품사
+        <select id="f-type">
+          <option value="noun">명사</option>
+          <option value="adj">형용사</option>
+          <option value="verb">동사</option>
+          <option value="other">기타</option>
+        </select>
+      </label>
+      <label id="w-g">성
+        <select id="f-g">
+          <option value="m">m 남성</option>
+          <option value="f">f 여성</option>
+          <option value="n">n 중성</option>
+        </select>
+      </label>
+      <label>과 (비우면 "내 단어")
+        <input id="f-lesson" inputmode="numeric" placeholder="예: 6">
+      </label>
+      <label id="w-cat" hidden>분류
+        <input id="f-cat" placeholder="예: 부사">
+      </label>
+    </div>
+    <div class="fields" id="formFields"></div>
+    <div class="fields">
+      <label>뜻 (한국어)
+        <input id="f-ko" placeholder="예: 의자">
+      </label>
+      <label>메모
+        <input id="f-note" placeholder="예: o → oa">
+      </label>
+    </div>
+    <p class="hint" id="guessHint"></p>
+    <div class="row">
+      <button class="btn primary" id="saveBtn" type="button">저장</button>
+      <button class="btn" id="guessBtn" type="button">정관사형 추정해서 채우기</button>
+      <button class="btn" id="cancelBtn" type="button">닫기</button>
+      <span class="status" id="saveStatus" role="status"></span>
+    </div>
+  </section>
+
+  <div class="row">
+    <span class="status" id="count"></span>
+    <span class="spacer"></span>
+    <span class="status" id="dbStatus">내 단어 불러오는 중…</span>
+    <button class="btn" id="copyMine" type="button" hidden>내 단어 복사 (JSON)</button>
+  </div>
+  <div class="list" id="list"></div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const TYPES = [
+  { id: "noun", name: "명사" },
+  { id: "adj", name: "형용사" },
+  { id: "verb", name: "동사" },
+  { id: "other", name: "기타" },
+];
+const FORM_LABELS = {
+  noun: ["단수", "복수", "단수 + 정관사", "복수 + 정관사"],
+  adj: ["남·중 단수", "여 단수", "남 복수", "여·중 복수"],
+  verb: ["eu", "tu", "el / ea", "noi", "voi", "ei / ele"],
+};
+const G_NAME = { m: "m 남성", f: "f 여성", n: "n 중성" };
+
+/* ---------- build base items from the book ---------- */
+const base = [];
+DATA.nouns.forEach((r, i) => base.push({ id: "n" + i, type: "noun", ro: r[0], g: r[1], forms: [r[0], r[2], r[3], r[4]], ko: r[5], lesson: r[6], note: r[7] }));
+DATA.adjs.forEach((r, i) => base.push({ id: "a" + i, type: "adj", ro: r[0] !== "—" ? r[0] : r[2], forms: [r[0], r[1], r[2], r[3]], ko: r[4], lesson: r[5], note: r[6] }));
+DATA.verbs.forEach((r, i) => base.push({ id: "v" + i, type: "verb", ro: r[0], forms: r[1], ko: r[2], lesson: r[3], note: r[4] }));
+DATA.other.forEach((r, i) => base.push({ id: "o" + i, type: "other", ro: r[0], ko: r[1], cat: r[2], lesson: r[3] }));
+
+let mine = [];
+const state = { tab: "noun", q: "", lesson: "all", genders: new Set(), hideKo: false, editing: null };
+try { const s = JSON.parse(localStorage.getItem("ro-vocab-ui") || "{}"); if (s.tab) state.tab = s.tab; if (s.hideKo) state.hideKo = true; } catch (e) {}
+function saveUi() { try { localStorage.setItem("ro-vocab-ui", JSON.stringify({ tab: state.tab, hideKo: state.hideKo })); } catch (e) {} }
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fold = (s) => String(s ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ş/g, "s").replace(/ţ/g, "t");
+
+function allItems() { return base.concat(mine); }
+
+/* bold the part of a form that differs from the dictionary word */
+function hl(word, form) {
+  if (!form || form === "—") return '<span>—</span>';
+  let p = 0;
+  while (p < word.length && p < form.length && word[p] === form[p]) p++;
+  if (p === form.length && p === word.length) return "<b>" + esc(form) + "</b>";
+  if (p < 2) return "<b>" + esc(form) + "</b>";
+  return esc(form.slice(0, p)) + "<b>" + esc(form.slice(p)) + "</b>";
+}
+
+function lessonLabel(l) { return l === "mine" || l === "" || l == null ? "내 단어" : l + "과"; }
+
+function filtered() {
+  const q = fold(state.q.trim());
+  return allItems().filter((it) => {
+    if (it.type !== state.tab) return false;
+    if (state.lesson === "mine" && !it.mine) return false;
+    if (state.lesson !== "all" && state.lesson !== "mine" && String(it.lesson) !== String(state.lesson)) return false;
+    if (state.tab === "noun" && state.genders.size && !state.genders.has(it.g)) return false;
+    if (q) {
+      const hay = fold([it.ro, it.ko, it.note, it.cat].concat(it.forms || []).join(" "));
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderTabs() {
+  const counts = {};
+  allItems().forEach((it) => { counts[it.type] = (counts[it.type] || 0) + 1; });
+  $("tabs").innerHTML = TYPES.map((t) =>
+    `<button role="tab" type="button" data-tab="${t.id}" aria-selected="${state.tab === t.id}">${t.name}<span class="cnt">${counts[t.id] || 0}</span></button>`
+  ).join("");
+}
+
+function renderFilters() {
+  const lessons = [...new Set(allItems().filter((i) => i.type === state.tab && !(i.mine && (i.lesson === "" || i.lesson == null))).map((i) => i.lesson))]
+    .filter((l) => l !== "" && l != null).sort((a, b) => Number(a) - Number(b));
+  const opts = [["all", "전체"]].concat(lessons.map((l) => [String(l), l + "과"]));
+  if (mine.some((m) => m.type === state.tab)) opts.push(["mine", "내가 추가한 단어"]);
+  $("lessonRow").innerHTML = '<span class="lbl">과</span>' + opts.map(([v, n]) =>
+    `<button class="chip" type="button" data-lesson="${esc(v)}" aria-pressed="${String(state.lesson) === v}">${esc(n)}</button>`).join("");
+  $("genderRow").hidden = state.tab !== "noun";
+  $("genderRow").innerHTML = '<span class="lbl">성</span>' + ["m", "f", "n"].map((g) =>
+    `<button class="chip g-${g}" type="button" data-g="${g}" aria-pressed="${state.genders.has(g)}">${G_NAME[g]}</button>`).join("");
+}
+
+function itemHtml(it) {
+  const badge = it.type === "noun" ? `<span class="g ${it.g}">${it.g}</span>` : it.type === "other" ? `<span class="g x">${esc(it.cat || "기타")}</span>` : "";
+  const meta = `<span class="meta">${esc(lessonLabel(it.mine && (it.lesson === "" || it.lesson == null) ? "mine" : it.lesson))}</span>`;
+  let forms = "";
+  if (it.forms && FORM_LABELS[it.type]) {
+    const labels = FORM_LABELS[it.type];
+    const ref = it.type === "verb" ? (it.forms[0] || "") : (it.forms[0] && it.forms[0] !== "—" ? it.forms[0] : it.ro);
+    forms = `<div class="forms${it.type === "verb" ? " six" : ""}">` + labels.map((k, i) =>
+      `<div><span class="k">${k}</span><span class="v">${it.type === "verb" ? esc(it.forms[i] || "—") : hl(ref, it.forms[i])}</span></div>`).join("") + "</div>";
+  }
+  const note = it.note ? `<div class="note">${esc(it.note)}</div>` : "";
+  const acts = it.mine ? `<div class="acts"><button class="btn" type="button" data-edit="${esc(it.id)}">수정</button><button class="btn danger" type="button" data-del="${esc(it.id)}">삭제</button></div>` : "";
+  return `<article class="item${it.mine ? " mine" : ""}" data-id="${esc(it.id)}">
+    <div class="head"><span class="ro" lang="ro">${esc(it.ro)}</span>${badge}<span class="ko">${esc(it.ko)}</span>${meta}</div>
+    ${forms}${note}${acts}</article>`;
+}
+
+function render() {
+  renderTabs(); renderFilters();
+  document.body.classList.toggle("hide-ko", state.hideKo);
+  $("hideKo").setAttribute("aria-pressed", state.hideKo);
+  const items = filtered();
+  $("count").textContent = items.length + "개 단어";
+  $("list").innerHTML = items.length ? items.map(itemHtml).join("")
+    : `<div class="empty">조건에 맞는 단어가 없어요.<br>위의 <b>+ 단어 추가</b>로 새 단어를 넣을 수 있어요.</div>`;
+}
+
+/* ---------- events ---------- */
+$("tabs").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-tab]"); if (!b) return;
+  state.tab = b.dataset.tab; state.lesson = "all"; state.genders.clear(); saveUi(); render();
+});
+$("lessonRow").addEventListener("click", (e) => { const b = e.target.closest("[data-lesson]"); if (!b) return; state.lesson = b.dataset.lesson; render(); });
+$("genderRow").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-g]"); if (!b) return;
+  const g = b.dataset.g; state.genders.has(g) ? state.genders.delete(g) : state.genders.add(g); render();
+});
+$("q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
+$("hideKo").addEventListener("click", () => { state.hideKo = !state.hideKo; saveUi(); render(); });
+$("list").addEventListener("click", (e) => {
+  const ed = e.target.closest("[data-edit]");
+  if (ed) { openPanel(mine.find((m) => m.id === ed.dataset.edit)); return; }
+  const del = e.target.closest("[data-del]");
+  if (del) {
+    if (del.dataset.armed) { removeWord(del.dataset.del); return; }
+    del.dataset.armed = "1"; del.textContent = "정말 삭제?";
+    setTimeout(() => { if (del.isConnected) { delete del.dataset.armed; del.textContent = "삭제"; } }, 3000);
+    return;
+  }
+  if (state.hideKo) { const it = e.target.closest(".item"); if (it) it.classList.toggle("show"); }
+});
+
+/* ---------- add / edit panel ---------- */
+function fieldDefs(type) {
+  if (type === "noun") return [["단수 (사전형)", "ex: scaun"], ["복수", "ex: scaune"], ["단수 + 정관사", "ex: scaunul"], ["복수 + 정관사", "ex: scaunele"]];
+  if (type === "adj") return [["남·중 단수", "ex: frumos"], ["여 단수", "ex: frumoasă"], ["남 복수", "ex: frumoși"], ["여·중 복수", "ex: frumoase"]];
+  if (type === "verb") return [["부정사", "ex: a citi"], ["eu", ""], ["tu", ""], ["el / ea", ""], ["noi", ""], ["voi", ""], ["ei / ele", ""]];
+  return [["단어 / 표현", "ex: încă"]];
+}
+function buildFields(values) {
+  const type = $("f-type").value;
+  $("w-g").hidden = type !== "noun";
+  $("w-cat").hidden = type !== "other";
+  $("guessBtn").hidden = type !== "noun";
+  $("guessHint").textContent = type === "noun" ? "복수형은 직접 적어 주세요. 정관사형은 규칙대로 추정할 수 있지만 예외가 있으니 확인하세요." : "";
+  $("formFields").innerHTML = fieldDefs(type).map(([l, ph], i) =>
+    `<label>${l}<input class="ro-in" id="ff-${i}" lang="ro" autocomplete="off" placeholder="${esc(ph)}" value="${esc(values ? values[i] || "" : "")}"></label>`).join("");
+}
+function openPanel(item) {
+  state.editing = item ? item.id : null;
+  $("panelTitle").textContent = item ? "단어 수정" : "단어 추가";
+  $("f-type").value = item ? item.type : state.tab;
+  $("f-g").value = item && item.g ? item.g : "m";
+  $("f-lesson").value = item && item.lesson != null ? item.lesson : "";
+  $("f-cat").value = item && item.cat ? item.cat : "";
+  $("f-ko").value = item ? item.ko || "" : "";
+  $("f-note").value = item ? item.note || "" : "";
+  const vals = item ? (item.type === "verb" ? [item.ro].concat(item.forms || []) : item.type === "other" ? [item.ro] : item.forms) : null;
+  buildFields(vals);
+  $("saveStatus").textContent = "";
+  $("panel").hidden = false;
+  $("ff-0").focus();
+}
+$("addBtn").addEventListener("click", () => openPanel(null));
+$("cancelBtn").addEventListener("click", () => { $("panel").hidden = true; state.editing = null; });
+$("f-type").addEventListener("change", () => buildFields(null));
+
+function guessDef(sg, g) {
+  if (!sg) return "";
+  if (g === "f") {
+    if (/ea$/.test(sg)) return sg + "ua";
+    if (/a$/.test(sg)) return sg + "ua";
+    if (/ă$/.test(sg)) return sg.slice(0, -1) + "a";
+    if (/ie$/.test(sg)) return sg.slice(0, -1) + "a";
+    if (/e$/.test(sg)) return sg + "a";
+    return sg + "a";
+  }
+  if (/e$/.test(sg)) return sg + "le";
+  if (/u$/.test(sg)) return sg + "l";
+  return sg + "ul";
+}
+function guessDefPl(pl, g) { if (!pl) return ""; return g === "m" ? pl + "i" : pl + "le"; }
+$("guessBtn").addEventListener("click", () => {
+  const g = $("f-g").value, sg = $("ff-0").value.trim(), pl = $("ff-1").value.trim();
+  if (!$("ff-2").value.trim()) $("ff-2").value = guessDef(sg, g);
+  if (!$("ff-3").value.trim() && pl) $("ff-3").value = guessDefPl(pl, g);
+  $("saveStatus").textContent = pl ? "추정값을 넣었어요. 확인 후 저장하세요." : "복수형을 먼저 적으면 복수 정관사형도 채워 드려요.";
+});
+
+let db = null, col = null;
+$("saveBtn").addEventListener("click", async () => {
+  const type = $("f-type").value;
+  const vals = fieldDefs(type).map((_, i) => ($("ff-" + i).value || "").trim());
+  if (!vals[0]) { $("saveStatus").textContent = "첫 칸(단어)을 적어 주세요."; return; }
+  const lessonRaw = $("f-lesson").value.trim();
+  const doc = { type, ko: $("f-ko").value.trim(), note: $("f-note").value.trim(), lesson: lessonRaw === "" ? null : (isNaN(+lessonRaw) ? lessonRaw : +lessonRaw), updatedAt: Date.now() };
+  if (type === "noun") { doc.ro = vals[0]; doc.g = $("f-g").value; doc.forms = vals.map((v) => v || "—"); }
+  else if (type === "adj") { doc.ro = vals[0]; doc.forms = vals.map((v) => v || "—"); }
+  else if (type === "verb") { doc.ro = vals[0]; doc.forms = vals.slice(1).map((v) => v || "—"); }
+  else { doc.ro = vals[0]; doc.cat = $("f-cat").value.trim() || "기타"; }
+  if (!col) { $("saveStatus").textContent = "저장소에 연결되지 않았어요. claude.ai에 로그인한 상태에서 다시 열어 주세요."; return; }
+  $("saveBtn").disabled = true; $("saveStatus").textContent = "저장 중…";
+  try {
+    if (state.editing) await col.doc(state.editing).set(doc);
+    else { doc.createdAt = Date.now(); await col.add(doc); }
+    $("saveStatus").textContent = "저장했어요: " + doc.ro;
+    const wasEditing = state.editing;
+    state.tab = type; state.editing = null;
+    if (wasEditing) { $("panel").hidden = true; }
+    else { buildFields(null); $("f-ko").value = ""; $("f-note").value = ""; $("ff-0").focus(); }
+    render();
+  } catch (e) {
+    $("saveStatus").textContent = "저장하지 못했어요 (" + (e && e.code ? e.code : "오류") + "). 이 단어장을 수정할 권한이 있는지 확인해 주세요.";
+  } finally { $("saveBtn").disabled = false; }
+});
+async function removeWord(id) {
+  if (!col) return;
+  try { await col.doc(id).delete(); } catch (e) { $("dbStatus").textContent = "삭제하지 못했어요."; }
+}
+
+$("copyMine").addEventListener("click", async () => {
+  const text = JSON.stringify(mine.map(({ id, mine: _m, ...rest }) => rest), null, 1);
+  try { await navigator.clipboard.writeText(text); $("dbStatus").textContent = "복사했어요."; }
+  catch (e) {
+    const ta = document.createElement("textarea"); ta.value = text; ta.style.width = "100%"; ta.rows = 6;
+    $("list").before(ta); ta.select(); $("dbStatus").textContent = "아래 상자의 내용을 복사하세요.";
+  }
+});
+
+/* ---------- shared store for words the user adds ---------- */
+render();
+(async () => {
+  const timer = setTimeout(() => { if (!col) $("dbStatus").textContent = "내 단어 저장소에 연결하지 못했어요. 교재 단어는 그대로 볼 수 있어요."; }, 10000);
+  try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (e) { db = null; }
+  if (!db) { clearTimeout(timer); $("dbStatus").textContent = "단어 추가는 claude.ai에 로그인해서 열었을 때 저장돼요."; return; }
+  col = db.collection("words");
+  col.onSnapshot((snap) => {
+    clearTimeout(timer);
+    mine = snap.docs.map((d) => Object.assign({}, d.data(), { id: d.id, mine: true })).filter((w) => w.ro && w.type)
+      .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+    $("dbStatus").textContent = mine.length ? "내가 추가한 단어 " + mine.length + "개" : "추가한 단어가 아직 없어요";
+    $("copyMine").hidden = !mine.length;
+    render();
+  }, (err) => { clearTimeout(timer); $("dbStatus").textContent = "내 단어를 불러오지 못했어요 (" + (err && err.code || "오류") + ")."; });
+})();
+</script>

@@ -1,0 +1,482 @@
+<title>루마니아어 단어장</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column; sticky control bar; each word is a row with its forms laid out as a small inflection grid. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #1b2230;
+  --muted: #5b6478;
+  --line: #dde1e9;
+  --accent: #2446c8;
+  --accent-soft: #e6ebfb;
+  --m: #1f63c6; --m-soft: #e3edfb;
+  --f: #c2335f; --f-soft: #fbe6ed;
+  --n: #1f8459; --n-soft: #e2f3ea;
+  --hl: #1b2230;
+  --font-ro: "Literata", "Georgia", "Times New Roman", serif;
+  --font-ui: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161e; --surface: #1a202b; --ink: #e7eaf1; --muted: #9aa3b6; --line: #2b3342;
+    --accent: #8aa2ff; --accent-soft: #232c45;
+    --m: #7fb0ff; --m-soft: #1d2b44; --f: #ff8db0; --f-soft: #3a1f2a; --n: #6fd3a3; --n-soft: #173326;
+    --hl: #ffffff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161e; --surface: #1a202b; --ink: #e7eaf1; --muted: #9aa3b6; --line: #2b3342;
+  --accent: #8aa2ff; --accent-soft: #232c45;
+  --m: #7fb0ff; --m-soft: #1d2b44; --f: #ff8db0; --f-soft: #3a1f2a; --n: #6fd3a3; --n-soft: #173326;
+  --hl: #ffffff; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 28px 64px; display: grid; gap: 18px; }
+header h1 { font-family: var(--font-ro); font-weight: 600; font-size: clamp(26px, 5vw, 36px); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+header .src { font-family: var(--font-ro); font-style: italic; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; display: grid; gap: 10px; border-bottom: 1px solid var(--line); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 3px; overflow-x: auto; }
+.tabs button { border: 0; background: transparent; color: var(--muted); font: 500 14px var(--font-ui); padding: 7px 12px; border-radius: 7px; cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--surface); }
+.tabs .cnt { font-size: 12px; opacity: .8; margin-left: 3px; font-variant-numeric: tabular-nums; }
+input[type="search"], .fields input, .fields select {
+  font: 15px var(--font-ui); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0;
+}
+input[type="search"] { flex: 1 1 200px; }
+.chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 13px var(--font-ui); padding: 4px 10px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.g-m[aria-pressed="true"] { background: var(--m); border-color: var(--m); color: var(--surface); }
+.chip.g-f[aria-pressed="true"] { background: var(--f); border-color: var(--f); color: var(--surface); }
+.chip.g-n[aria-pressed="true"] { background: var(--n); border-color: var(--n); color: var(--surface); }
+.lbl { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.btn { font: 500 14px var(--font-ui); border-radius: 8px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn.danger { color: var(--f); }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.spacer { flex: 1; }
+
+details.gram { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+details.gram summary { cursor: pointer; font-weight: 500; }
+.gram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 12px; }
+.gram h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); font-weight: 500; }
+.tbl-wrap { overflow-x: auto; }
+.gram table { border-collapse: collapse; font-size: 14px; width: 100%; }
+.gram th, .gram td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; }
+.gram th { font-weight: 500; color: var(--muted); font-size: 12px; }
+.gram td { font-family: var(--font-ro); }
+.gram p { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+.status { font-size: 13px; color: var(--muted); }
+.list { display: grid; gap: 8px; }
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; }
+.item.mine { border-style: dashed; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.ro { font-family: var(--font-ro); font-size: 21px; font-weight: 600; line-height: 1.2; }
+.g { font: 700 11px var(--font-ui); padding: 2px 7px; border-radius: 5px; letter-spacing: .03em; }
+.g.m { color: var(--m); background: var(--m-soft); }
+.g.f { color: var(--f); background: var(--f-soft); }
+.g.n { color: var(--n); background: var(--n-soft); }
+.g.x { color: var(--muted); background: var(--bg); }
+.ko { color: var(--ink); flex: 1 1 160px; min-width: 0; }
+.hide-ko .ko { color: transparent; background: var(--bg); border-radius: 4px; cursor: pointer; user-select: none; }
+.hide-ko .item.show .ko { color: var(--ink); background: transparent; }
+.meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.forms { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.forms.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.forms > div { background: var(--surface); padding: 5px 8px; min-width: 0; }
+.forms .k { display: block; font-size: 11px; color: var(--muted); }
+.forms .v { font-family: var(--font-ro); font-size: 16px; overflow-wrap: anywhere; color: var(--muted); }
+.forms .v b { color: var(--hl); font-weight: 600; }
+.note { font-size: 13px; color: var(--muted); }
+.acts { display: flex; gap: 6px; }
+.acts .btn { padding: 4px 10px; font-size: 13px; }
+@media (max-width: 560px) {
+  .bar { position: static; }
+  .forms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .forms.six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.empty { text-align: center; color: var(--muted); padding: 32px 8px; }
+
+.panel { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
+.panel h2 { margin: 0; font-size: 17px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.fields label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); min-width: 0; }
+.fields input, .fields select { width: 100%; }
+.fields input.ro-in { font-family: var(--font-ro); }
+.hint { font-size: 12px; color: var(--muted); margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>루마니아어 단어장</h1>
+    <p><span class="src">Limba română — manual pentru studenții străini</span> · 1–5과 (교재 p.13–51)</p>
+  </header>
+
+  <details class="gram" id="gram">
+    <summary>성·수 변화 한눈에 보기 (교재 문법표 요약)</summary>
+    <div class="gram-grid">
+      <div>
+        <h3>복수 어미</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th>남성 m</th><th>중성 n</th><th>여성 f</th></tr>
+          <tr><td>-i</td><td>-uri / -e / -i</td><td>-e / -i / -le</td></tr>
+        </table></div>
+        <p>중성 = 단수는 남성처럼(un, doi는 아님), 복수는 여성처럼(două).</p>
+      </div>
+      <div>
+        <h3>수사와 성</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m</th><th>n</th><th>f</th></tr>
+          <tr><th>1</th><td>un</td><td>un</td><td>o</td></tr>
+          <tr><th>2</th><td>doi</td><td>două</td><td>două</td></tr>
+        </table></div>
+        <p>20 이상은 de: douăzeci de studenți.</p>
+      </div>
+      <div>
+        <h3>정관사 (명사 뒤에 붙음)</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m / n</th><th>f</th></tr>
+          <tr><th>단수</th><td>-(u)l, -le</td><td>-a, -(u)a</td></tr>
+          <tr><th>복수</th><td>m -i · n -le</td><td>-le</td></tr>
+        </table></div>
+        <p>student → studentul, casă → casa, carte → cartea, șosea → șoseaua</p>
+      </div>
+      <div>
+        <h3>형용사 4형태</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th></th><th>m</th><th>n</th><th>f</th></tr>
+          <tr><th>단수</th><td colspan="2">-Ø, -u</td><td>-ă</td></tr>
+          <tr><th>복수</th><td>-i</td><td colspan="2">-e</td></tr>
+        </table></div>
+        <p>명사 뒤에 옴: un student român</p>
+      </div>
+    </div>
+  </details>
+
+  <div class="bar">
+    <div class="row">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <span class="spacer"></span>
+      <button class="btn primary" id="addBtn" type="button">+ 단어 추가</button>
+    </div>
+    <div class="row">
+      <input type="search" id="q" placeholder="검색: 루마니아어 또는 한국어 (ă·ș 없이도 됨)" autocomplete="off">
+      <button class="chip" id="hideKo" type="button" aria-pressed="false">뜻 가리기</button>
+    </div>
+    <div class="row" id="lessonRow"></div>
+    <div class="row" id="genderRow"></div>
+  </div>
+
+  <section class="panel" id="panel" hidden>
+    <h2 id="panelTitle">단어 추가</h2>
+    <div class="fields">
+      <label>품사
+        <select id="f-type">
+          <option value="noun">명사</option>
+          <option value="adj">형용사</option>
+          <option value="verb">동사</option>
+          <option value="other">기타</option>
+        </select>
+      </label>
+      <label id="w-g">성
+        <select id="f-g">
+          <option value="m">m 남성</option>
+          <option value="f">f 여성</option>
+          <option value="n">n 중성</option>
+        </select>
+      </label>
+      <label>과 (비우면 "내 단어")
+        <input id="f-lesson" inputmode="numeric" placeholder="예: 6">
+      </label>
+      <label id="w-cat" hidden>분류
+        <input id="f-cat" placeholder="예: 부사">
+      </label>
+    </div>
+    <div class="fields" id="formFields"></div>
+    <div class="fields">
+      <label>뜻 (한국어)
+        <input id="f-ko" placeholder="예: 의자">
+      </label>
+      <label>메모
+        <input id="f-note" placeholder="예: o → oa">
+      </label>
+    </div>
+    <p class="hint" id="guessHint"></p>
+    <div class="row">
+      <button class="btn primary" id="saveBtn" type="button">저장</button>
+      <button class="btn" id="guessBtn" type="button">정관사형 추정해서 채우기</button>
+      <button class="btn" id="cancelBtn" type="button">닫기</button>
+      <span class="status" id="saveStatus" role="status"></span>
+    </div>
+  </section>
+
+  <div class="row">
+    <span class="status" id="count"></span>
+    <span class="spacer"></span>
+    <span class="status" id="dbStatus">내 단어 불러오는 중…</span>
+    <button class="btn" id="copyMine" type="button" hidden>내 단어 복사 (JSON)</button>
+  </div>
+  <div class="list" id="list"></div>
+</div>
+
+<script>
+const DATA = {"nouns":[["profesor","m","profesori","profesorul","profesorii","교수, 선생님 (남)",1,""],["profesoară","f","profesoare","profesoara","profesoarele","교수, 선생님 (여)",1,""],["student","m","studenți","studentul","studenții","대학생 (남)",1,"t → ț"],["studentă","f","studente","studenta","studentele","대학생 (여)",1,""],["doctorand","m","doctoranzi","doctorandul","doctoranzii","박사과정생 (남)",1,"d → z"],["doctorandă","f","doctorande","doctoranda","doctorandele","박사과정생 (여)",1,""],["specialist","m","specialiști","specialistul","specialiștii","전문가 (남)",1,"st → șt"],["specialistă","f","specialiste","specialista","specialistele","전문가 (여)",1,""],["coleg","m","colegi","colegul","colegii","동료, 동기 (남)",1,"g 발음 [g] → [ǧ]"],["colegă","f","colege","colega","colegele","동료, 동기 (여)",1,""],["prieten","m","prieteni","prietenul","prietenii","친구 (남)",1,""],["prietenă","f","prietene","prietena","prietenele","친구 (여)",1,""],["român","m","români","românul","românii","루마니아인 (남)",1,""],["româncă","f","românce","românca","româncele","루마니아인 (여)",1,"c 발음 [k] → [č]"],["străin","m","străini","străinul","străinii","외국인 (남)",1,""],["străină","f","străine","străina","străinele","외국인 (여)",1,""],["domn","m","domni","domnul","domnii","신사, ~씨 (Mr.)",1,"Dl. = domnul"],["doamnă","f","doamne","doamna","doamnele","부인, ~여사 (Mrs.)",1,""],["domnișoară","f","domnișoare","domnișoara","domnișoarele","아가씨, ~양 (Miss)",1,""],["medic","m","medici","medicul","medicii","의사",1,"c 발음 [k] → [č]"],["inginer","m","ingineri","inginerul","inginerii","엔지니어, 기술자",1,""],["elev","m","elevi","elevul","elevii","학생 (초·중·고, 남)",1,""],["elevă","f","eleve","eleva","elevele","학생 (초·중·고, 여)",1,""],["oraș","n","orașe","orașul","orașele","도시",1,""],["țară","f","țări","țara","țările","나라",1,"a → ă"],["facultate","f","facultăți","facultatea","facultățile","단과대학, 학부",1,"Facultatea de Litere 문과대학"],["universitate","f","universități","universitatea","universitățile","대학교",1,""],["teatru","n","teatre","teatrul","teatrele","극장",1,"Teatrul Național 국립극장"],["hotel","n","hoteluri","hotelul","hotelurile","호텔",1,""],["zi","f","zile","ziua","zilele","날, 하루",1,"정관사형이 불규칙: ziua"],["dimineață","f","dimineți","dimineața","diminețile","아침",1,"Bună dimineața! 좋은 아침"],["seară","f","seri","seara","serile","저녁",1,"Bună seara!"],["limbă","f","limbi","limba","limbile","언어; 혀",1,"limba română 루마니아어"],["istorie","f","istorii","istoria","istoriile","역사",1,""],["matematică","f","matematici","matematica","matematicile","수학",1,"보통 단수로 씀"],["literă","f","litere","litera","literele","글자; (복수) 문학",1,""],["cameră","f","camere","camera","camerele","방",1,""],["pas","m","pași","pasul","pașii","걸음",1,"s → ș"],["sală","f","săli","sala","sălile","홀, 강의실",2,"sală de curs 강의실"],["curs","n","cursuri","cursul","cursurile","강의, 수업",2,""],["lucru","n","lucruri","lucrul","lucrurile","물건; 일",2,"zi de lucru 근무일"],["bancă","f","bănci","banca","băncile","(교실) 긴 책상, 벤치; 은행",2,"a → ă, c → [č]"],["scaun","n","scaune","scaunul","scaunele","의자",2,""],["catedră","f","catedre","catedra","catedrele","교탁",2,""],["tablă","f","table","tabla","tablele","칠판",2,""],["ușă","f","uși","ușa","ușile","문",2,""],["cuier","n","cuiere","cuierul","cuierele","옷걸이 (스탠드형)",2,""],["fereastră","f","ferestre","fereastra","ferestrele","창문",2,""],["bibliotecă","f","biblioteci","biblioteca","bibliotecile","도서관; 책장",2,"c 발음 [k] → [č]"],["perete","m","pereți","peretele","pereții","벽",2,"pe perete 벽에"],["tablou","n","tablouri","tabloul","tablourile","그림, 액자",2,""],["hartă","f","hărți","harta","hărțile","지도",2,"a → ă, t → ț"],["manual","n","manuale","manualul","manualele","교과서",2,""],["creion","n","creioane","creionul","creioanele","연필",2,""],["hârtie","f","hârtii","hârtia","hârtiile","종이",2,""],["caiet","n","caiete","caietul","caietele","공책",2,""],["pix","n","pixuri","pixul","pixurile","볼펜",2,""],["stilou","n","stilouri","stiloul","stilourile","만년필",2,""],["dicționar","n","dicționare","dicționarul","dicționarele","사전",2,""],["studiu","n","studii","studiul","studiile","학업, 공부",2,"pentru studii 공부하러"],["doctorat","n","doctorate","doctoratul","doctoratele","박사과정",2,""],["specializare","f","specializări","specializarea","specializările","전문 연수, 전공 과정",2,""],["agronom","m","agronomi","agronomul","agronomii","농학자",2,""],["geolog","m","geologi","geologul","geologii","지질학자",2,""],["lecție","f","lecții","lecția","lecțiile","수업; (교재의) 과",2,""],["școală","f","școli","școala","școlile","학교",2,"oa → o"],["grupă","f","grupe","grupa","grupele","(수업) 반, 그룹",2,""],["clasă","f","clase","clasa","clasele","교실; 학급",2,""],["seminar","n","seminarii","seminarul","seminariile","세미나",2,""],["oră","f","ore","ora","orele","시간(hour); 수업 시간",2,"oră de curs 수업 시간"],["temă","f","teme","tema","temele","숙제; 주제",2,""],["exercițiu","n","exerciții","exercițiul","exercițiile","연습문제",2,"caiet de exerciții 연습장"],["carte","f","cărți","cartea","cărțile","책",2,"a → ă, t → ț"],["cerneală","f","cerneluri","cerneala","cernelurile","잉크",2,""],["linie","f","linii","linia","liniile","자; 선",2,""],["gumă","f","gume","guma","gumele","지우개; 껌",2,""],["cretă","f","crete","creta","cretele","분필",2,""],["burete","m","bureți","buretele","bureții","칠판지우개, 스펀지",2,""],["institut","n","institute","institutul","institutele","연구소, (단과) 대학",2,""],["fizică","f","—","fizica","—","물리학",2,"단수만"],["săptămână","f","săptămâni","săptămâna","săptămânile","주(週)",2,""],["lună","f","luni","luna","lunile","달, 월(月)",2,"복수 luni = 월요일과 같은 모양"],["an","m","ani","anul","anii","해, 년",2,"Am 20 de ani. 나는 20살"],["anotimp","n","anotimpuri","anotimpul","anotimpurile","계절",2,""],["dată","f","date","data","datele","날짜",2,"Ce dată e? 며칠이야?"],["primăvară","f","primăveri","primăvara","primăverile","봄",2,""],["vară","f","veri","vara","verile","여름",2,""],["toamnă","f","toamne","toamna","toamnele","가을",2,""],["iarnă","f","ierni","iarna","iernile","겨울",2,""],["luni","f","—","lunea","—","월요일",2,"요일은 여성"],["marți","f","—","marțea","—","화요일",2,""],["miercuri","f","—","miercurea","—","수요일",2,""],["joi","f","—","joia","—","목요일",2,""],["vineri","f","—","vinerea","—","금요일",2,""],["sâmbătă","f","sâmbete","sâmbăta","sâmbetele","토요일",2,""],["duminică","f","duminici","duminica","duminicile","일요일",2,""],["băiat","m","băieți","băiatul","băieții","소년, 남자아이",2,"문법표"],["ban","m","bani","banul","banii","동전; (복수) 돈",2,"문법표"],["pantof","m","pantofi","pantoful","pantofii","구두",2,"문법표"],["metru","m","metri","metrul","metrii","미터; 자",2,"-u → -i"],["membru","m","membri","membrul","membrii","회원",2,"문법표"],["fiu","m","fii","fiul","fiii","아들",2,"문법표"],["leu","m","lei","leul","leii","레우 (루마니아 돈); 사자",2,"-u → -i"],["frate","m","frați","fratele","frații","형제",2,"-e → -i"],["munte","m","munți","muntele","munții","산",2,"-e → -i"],["câine","m","câini","câinele","câinii","개",2,"문법표"],["ochi","m","ochi","ochiul","ochii","눈 (eye)",2,"단수=복수"],["unchi","m","unchi","unchiul","unchii","삼촌",2,"단수=복수"],["pui","m","pui","puiul","puii","병아리; 닭고기",2,"단수=복수"],["copil","m","copii","copilul","copiii","아이",2,"l 탈락"],["cal","m","cai","calul","caii","말 (horse)",2,"l 탈락"],["bărbat","m","bărbați","bărbatul","bărbații","남자",2,"t → ț"],["urs","m","urși","ursul","urșii","곰",2,"s → ș"],["artist","m","artiști","artistul","artiștii","예술가",2,"st → șt"],["om","m","oameni","omul","oamenii","사람",4,"불규칙 복수"],["dulap","n","dulapuri","dulapul","dulapurile","옷장, 장",2,""],["exemplu","n","exemple","exemplul","exemplele","예, 예시",2,""],["timbru","n","timbre","timbrul","timbrele","우표",2,""],["muzeu","n","muzee","muzeul","muzeele","박물관",2,"-u → -e"],["nume","n","nume","numele","numele","이름, 성",2,"단수=복수"],["prenume","n","prenume","prenumele","prenumele","이름 (first name)",2,"단수=복수"],["tramvai","n","tramvaie","tramvaiul","tramvaiele","트램, 전차",2,""],["ceai","n","ceaiuri","ceaiul","ceaiurile","차 (tea)",2,""],["ulei","n","uleiuri","uleiul","uleiurile","기름",2,""],["taxi","n","taxiuri","taxiul","taxiurile","택시",2,""],["tren","n","trenuri","trenul","trenurile","기차",2,""],["fotoliu","n","fotolii","fotoliul","fotoliile","안락의자",2,"-iu → -ii"],["cuvânt","n","cuvinte","cuvântul","cuvintele","단어",2,"â → i"],["pașaport","n","pașapoarte","pașaportul","pașapoartele","여권",2,"o → oa"],["popor","n","popoare","poporul","popoarele","민족, 국민",2,"o → oa"],["număr","n","numere","numărul","numerele","숫자, 번호",2,"ă → e"],["măr","n","mere","mărul","merele","사과 (과일)",2,"ă → e (사과나무는 m. meri)"],["milion","n","milioane","milionul","milioanele","백만",2,""],["casă","f","case","casa","casele","집",2,""],["mașină","f","mașini","mașina","mașinile","자동차",2,""],["stradă","f","străzi","strada","străzile","거리",2,"a → ă, d → z"],["lume","f","lumi","lumea","lumile","세상; 사람들",2,"multă lume 사람이 많다"],["mâncare","f","mâncăruri","mâncarea","mâncărurile","음식",2,""],["pâine","f","pâini","pâinea","pâinile","빵",2,""],["femeie","f","femei","femeia","femeile","여자",2,""],["cheie","f","chei","cheia","cheile","열쇠",2,""],["baie","f","băi","baia","băile","욕실, 화장실",2,""],["familie","f","familii","familia","familiile","가족",2,""],["fotografie","f","fotografii","fotografia","fotografiile","사진",2,""],["farmacie","f","farmacii","farmacia","farmaciile","약국",2,""],["șosea","f","șosele","șoseaua","șoselele","도로, 대로",2,"-ea → -ele"],["cafea","f","cafele","cafeaua","cafelele","커피",2,"-ea → -ele"],["măsea","f","măsele","măseaua","măselele","어금니",2,"-ea → -ele"],["pijama","f","pijamale","pijamaua","pijamalele","잠옷",2,"-a → -ale"],["cămașă","f","cămăși","cămașa","cămășile","셔츠",2,"a → ă"],["floare","f","flori","floarea","florile","꽃",2,"oa → o"],["fată","f","fete","fata","fetele","소녀, 여자아이",2,"a → e"],["masă","f","mese","masa","mesele","탁자; 식사",2,"a → e"],["pară","f","pere","para","perele","배 (과일)",2,"a → e"],["noapte","f","nopți","noaptea","nopțile","밤",2,"oa → o"],["muncitoare","f","muncitoare","muncitoarea","muncitoarele","노동자 (여)",2,"단수=복수"],["muncitor","m","muncitori","muncitorul","muncitorii","노동자 (남)",2,""],["învățătoare","f","învățătoare","învățătoarea","învățătoarele","초등교사 (여)",2,"단수=복수"],["cantină","f","cantine","cantina","cantinele","구내식당",2,""],["sută","f","sute","suta","sutele","백 (100)",2,"o sută, două sute"],["mie","f","mii","mia","miile","천 (1000)",2,"o mie, două mii"],["cămin","n","cămine","căminul","căminele","기숙사",3,"cămin de studenți"],["clădire","f","clădiri","clădirea","clădirile","건물",3,""],["etaj","n","etaje","etajul","etajele","층",3,"la etaj 위층에"],["lectură","f","lecturi","lectura","lecturile","독서",3,"sală de lectură 열람실"],["duș","n","dușuri","dușul","dușurile","샤워(기)",3,""],["chiuvetă","f","chiuvete","chiuveta","chiuvetele","세면대, 싱크대",3,""],["pat","n","paturi","patul","paturile","침대",3,""],["noptieră","f","noptiere","noptiera","noptierele","침대 옆 협탁",3,""],["pernă","f","perne","perna","pernele","베개",3,""],["cearșaf","n","cearșafuri","cearșaful","cearșafurile","(침대) 시트",3,""],["pled","n","pleduri","pledul","pledurile","얇은 담요",3,""],["cuvertură","f","cuverturi","cuvertura","cuverturile","침대 커버",3,""],["covor","n","covoare","covorul","covoarele","카펫",3,"o → oa"],["perdea","f","perdele","perdeaua","perdelele","커튼",3,"-ea → -ele"],["oglindă","f","oglinzi","oglinda","oglinzile","거울",3,"d → z"],["veioză","f","veioze","veioza","veiozele","스탠드 조명",3,""],["lampă","f","lămpi","lampa","lămpile","램프",3,"a → ă"],["bec","n","becuri","becul","becurile","전구",3,""],["față de masă","f","fețe de masă","fața de masă","fețele de masă","식탁보",3,""],["față de pernă","f","fețe de pernă","fața de pernă","fețele de pernă","베갯잇",3,""],["pătură","f","pături","pătura","păturile","담요",3,""],["saltea","f","saltele","salteaua","saltelele","매트리스",3,"-ea → -ele"],["plapumă","f","plăpumi","plapuma","plăpumile","이불",3,"a → ă"],["așternut","n","așternuturi","așternutul","așternuturile","침구",3,""],["aparat","n","aparate","aparatul","aparatele","기기, 장치",3,"aparat de radio 라디오"],["radio","n","radiouri","radioul","radiourile","라디오",3,""],["televizor","n","televizoare","televizorul","televizoarele","텔레비전",3,"o → oa"],["hol","n","holuri","holul","holurile","복도, 홀",3,""],["raft","n","rafturi","raftul","rafturile","선반",3,""],["cinema","n","cinemauri","cinemaul","cinemaurile","영화관",3,""],["pauză","f","pauze","pauza","pauzele","휴식 시간",3,""],["după-amiază","f","după-amiezi","după-amiaza","după-amiezile","오후",3,"ia → ie, z"],["chimie","f","—","chimia","—","화학",3,"단수만"],["stație","f","stații","stația","stațiile","정류장",4,"stație de troleibuz"],["troleibuz","n","troleibuze","troleibuzul","troleibuzele","트롤리버스",4,""],["autobuz","n","autobuze","autobuzul","autobuzele","버스",4,""],["bilet","n","bilete","biletul","biletele","표, 티켓",4,""],["piesă","f","piese","piesa","piesele","(연극) 작품",4,"piesă de teatru"],["loc","n","locuri","locul","locurile","자리, 장소",4,""],["centru","n","centre","centrul","centrele","중심, 시내",4,""],["capitală","f","capitale","capitala","capitalele","수도",4,""],["bulevard","n","bulevarde","bulevardul","bulevardele","대로",4,""],["drum","n","drumuri","drumul","drumurile","길",4,""],["cartier","n","cartiere","cartierul","cartierele","동네, 구역",4,""],["bloc","n","blocuri","blocul","blocurile","아파트 건물",4,""],["parc","n","parcuri","parcul","parcurile","공원",4,""],["magazin","n","magazine","magazinul","magazinele","가게, 상점",4,""],["restaurant","n","restaurante","restaurantul","restaurantele","식당",4,""],["cofetărie","f","cofetării","cofetăria","cofetăriile","제과점, 디저트 카페",4,""],["librărie","f","librării","librăria","librăriile","서점",4,"bibliotecă(도서관)와 구분!"],["cinematograf","n","cinematografe","cinematograful","cinematografele","영화관",4,""],["poștă","f","poște","poșta","poștele","우체국",4,""],["piață","f","piețe","piața","piețele","시장; 광장",4,"ia → ie"],["kilometru","m","kilometri","kilometrul","kilometrii","킬로미터",4,""],["geantă","f","genți","geanta","gențile","가방",4,"불규칙 복수"],["film","n","filme","filmul","filmele","영화",4,""],["pom","m","pomi","pomul","pomii","(과일) 나무",4,""],["minut","n","minute","minutul","minutele","분 (minute)",5,""],["parter","n","partere","parterul","parterele","1층 (지상층)",5,"la parter"],["plimbare","f","plimbări","plimbarea","plimbările","산책",5,"a face o plimbare 산책하다"],["timp","n","timpuri","timpul","timpurile","시간",5,"N-am timp. 시간이 없어"],["jumătate","f","jumătăți","jumătatea","jumătățile","절반",5,"șapte și jumătate 7시 반"]],"adjs":[["român","română","români","române","루마니아의",1,""],["străin","străină","străini","străine","외국의",1,""],["național","națională","naționali","naționale","국립의, 국가의",1,""],["cât","câtă","câți","câte","몇, 얼마나 (의문)",1,"Câți studenți? Câte cărți?"],["fiecare","fiecare","—","—","각각의, 모든",3,"단수 명사와"],["mult","multă","mulți","multe","많은",3,""],["puțin","puțină","puțini","puține","적은",3,""],["—","—","câțiva","câteva","몇몇의",3,"복수만"],["tot","toată","toți","toate","모든, 전부의",4,"toți studenții (정관사와 함께)"],["acest","această","acești","aceste","이 (지시)",4,""],["bun","bună","buni","bune","좋은",4,"↔ rău"],["rău","rea","răi","rele","나쁜",4,"↔ bun"],["frumos","frumoasă","frumoși","frumoase","아름다운, 멋진",4,"↔ urât"],["urât","urâtă","urâți","urâte","못생긴, 보기 싫은",4,"↔ frumos"],["scump","scumpă","scumpi","scumpe","비싼",4,"↔ ieftin"],["ieftin","ieftină","ieftini","ieftine","싼",4,"↔ scump"],["curat","curată","curați","curate","깨끗한",4,"↔ murdar"],["murdar","murdară","murdari","murdare","더러운",4,"↔ curat"],["înalt","înaltă","înalți","înalte","높은, 키 큰",4,"↔ scund"],["scund","scundă","scunzi","scunde","키 작은, 낮은",4,"↔ înalt"],["liber","liberă","liberi","libere","자유로운, 비어 있는",4,"↔ ocupat"],["ocupat","ocupată","ocupați","ocupate","바쁜, 사용 중인",4,"↔ liber"],["modern","modernă","moderni","moderne","현대적인",4,""],["elegant","elegantă","eleganți","elegante","우아한",4,""],["confortabil","confortabilă","confortabili","confortabile","편안한",4,""],["luminos","luminoasă","luminoși","luminoase","밝은",4,""],["numeros","numeroasă","numeroși","numeroase","수많은",4,"명사 앞에 옴"],["interesant","interesantă","interesanți","interesante","흥미로운",4,""],["sănătos","sănătoasă","sănătoși","sănătoase","건강한",4,""],["furtunos","furtunoasă","furtunoși","furtunoase","폭풍우 치는",4,"O noapte furtunoasă"],["alb","albă","albi","albe","흰",4,""],["negru","neagră","negri","negre","검은",4,"e → ea"],["albastru","albastră","albaștri","albastre","파란",4,"str → ștr"]],"verbs":[["a fi",["sunt","ești","este (e)","suntem","sunteți","sunt"],"~이다, 있다",1,"옛 표기: sînt, sîntem, sînteți"],["a avea",["am","ai","are","avem","aveți","au"],"가지다, 있다",3,"nu + am = n-am"],["a costa",["cost","costi","costă","costăm","costați","costă"],"(값이) ~이다",4,"Cât costă? 얼마예요?"],["a începe",["încep","începi","începe","începem","începeți","încep"],"시작하다",5,""],["a ieși",["ies","ieși","iese","ieșim","ieșiți","ies"],"나가다",5,""],["a merge",["merg","mergi","merge","mergem","mergeți","merg"],"가다",5,"merg pe jos 걸어가다"],["a cumpăra",["cumpăr","cumperi","cumpără","cumpărăm","cumpărați","cumpără"],"사다",5,""],["a aștepta",["aștept","aștepți","așteaptă","așteptăm","așteptați","așteaptă"],"기다리다",5,""],["a veni",["vin","vii","vine","venim","veniți","vin"],"오다",5,""],["a urca",["urc","urci","urcă","urcăm","urcați","urcă"],"오르다, 타다",5,""],["a coborî",["cobor","cobori","coboară","coborâm","coborâți","coboară"],"내리다, 내려가다",5,""],["a ajunge",["ajung","ajungi","ajunge","ajungem","ajungeți","ajung"],"도착하다",5,""],["a alerga",["alerg","alergi","aleargă","alergăm","alergați","aleargă"],"달리다",5,""],["a intra",["intru","intri","intră","intrăm","intrați","intră"],"들어가다",5,""],["a pleca",["plec","pleci","pleacă","plecăm","plecați","pleacă"],"떠나다",5,""],["a termina",["termin","termini","termină","terminăm","terminați","termină"],"끝내다",5,""],["a face",["fac","faci","face","facem","faceți","fac"],"하다, 만들다",5,""],["a rămâne",["rămân","rămâi","rămâne","rămânem","rămâneți","rămân"],"남다, 머무르다",5,""],["a învăța",["învăț","înveți","învață","învățăm","învățați","învață"],"배우다, 공부하다",5,""],["a vedea",["văd","vezi","vede","vedem","vedeți","văd"],"보다",5,""],["a mulțumi",["mulțumesc","mulțumești","mulțumește","mulțumim","mulțumiți","mulțumesc"],"감사하다",5,"Mulțumesc! 고마워요"]],"other":[["eu","나","인칭대명사",1],["tu","너","인칭대명사",1],["el","그 (남)","인칭대명사",1],["ea","그녀","인칭대명사",1],["noi","우리","인칭대명사",1],["voi","너희","인칭대명사",1],["ei","그들 (남/혼성)","인칭대명사",1],["ele","그녀들","인칭대명사",1],["dumneavoastră","당신 (존칭, 동사는 voi형)","인칭대명사",1],["cine","누구","의문사",1],["ce","무엇; 어떤","의문사",1],["unde","어디","의문사",1],["de unde","어디에서 (출신)","의문사",1],["de când","언제부터","의문사",1],["când","언제","의문사",3],["cât","얼마나","의문사",4],["de ce","왜","의문사",5],["Bună dimineața!","좋은 아침입니다","인사",1],["Bună ziua!","안녕하세요 (낮)","인사",1],["Bună seara!","좋은 저녁입니다","인사",1],["La revedere!","안녕히 가세요","인사",1],["Mulțumesc!","감사합니다","인사",5],["aici","여기","부사",1],["acolo","거기, 저기","부사",1],["acum","지금","부사",1],["da","네","부사",1],["nu","아니요; ~않다","부사",1],["ba da","아니요, ~맞아요 (부정 질문에 긍정)","부사",1],["astăzi / azi","오늘","부사",2],["mâine","내일","부사",3],["ieri","어제","부사",2],["foarte","매우","부사",3],["mai","더, 또","부사",3],["aproape","가까이","부사",4],["departe","멀리","부사",4],["la stânga","왼쪽에","부사",4],["la dreapta","오른쪽에","부사",4],["întotdeauna","항상","부사",4],["sus","위에, 위층에","부사",5],["jos","아래에, 아래층에","부사",5],["pe jos","걸어서","부사",5],["repede","빨리","부사",5],["încet","천천히","부사",5],["imediat","즉시","부사",5],["devreme","일찍","부사",5],["acasă","집에, 집으로","부사",5],["împreună","함께","부사",5],["deseară","오늘 저녁에","부사",5],["nimeni","아무도 (+nu)","부정대명사",3],["nimic","아무것도 (+nu)","부정대명사",3],["în","~안에","전치사",1],["din","~에서, ~출신","전치사",1],["lângă","~옆에","전치사",1],["la","~에 (장소/시간)","전치사",2],["pe","~위에","전치사",2],["pentru","~를 위해","전치사",2],["de","~의; ~부터","전치사",2],["de la","~부터","전치사",2],["într-un / într-o","~(하나의) 안에","전치사",2],["dintr-un / dintr-o","~(하나의) 에서","전치사",3],["cu","~와 함께, ~를 가진","전치사",4],["spre","~쪽으로","전치사",5],["după","~후에","전치사",3],["până","~까지","전치사",5],["și","그리고; ~도","접속사",1],["sau","또는","접속사",1],["iar","한편, 그리고","접속사",1],["dar","그러나","접속사",1],["pentru că","왜냐하면","접속사",3],["unu / una","1 (un / o + 명사)","숫자",1],["doi / două","2","숫자",1],["trei","3","숫자",1],["patru","4","숫자",1],["cinci","5","숫자",1],["șase","6","숫자",1],["șapte","7","숫자",1],["opt","8","숫자",1],["nouă","9","숫자",1],["zece","10","숫자",1],["unsprezece","11","숫자",1],["doisprezece / douăsprezece","12","숫자",1],["paisprezece","14","숫자",1],["șaisprezece","16","숫자",1],["douăzeci","20","숫자",2],["douăzeci și unu","21","숫자",2],["o sută","100","숫자",2],["o mie","1000","숫자",2],["un milion","1 000 000","숫자",2],["întâi","첫째 날 (1일)","숫자",2],["ianuarie","1월","월",2],["februarie","2월","월",2],["martie","3월","월",2],["aprilie","4월","월",2],["mai","5월","월",2],["iunie","6월","월",2],["iulie","7월","월",2],["august","8월","월",2],["septembrie","9월","월",2],["octombrie","10월","월",2],["noiembrie","11월","월",2],["decembrie","12월","월",2],["România","루마니아","나라",1],["Anglia","영국","나라",1],["Bulgaria","불가리아","나라",1],["Brazilia","브라질","나라",1],["Siria","시리아","나라",1],["Spania","스페인","나라",1],["Franța","프랑스","나라",1],["Italia","이탈리아","나라",1],["Grecia","그리스","나라",1]]};
+
+const TYPES = [
+  { id: "noun", name: "명사" },
+  { id: "adj", name: "형용사" },
+  { id: "verb", name: "동사" },
+  { id: "other", name: "기타" },
+];
+const FORM_LABELS = {
+  noun: ["단수", "복수", "단수 + 정관사", "복수 + 정관사"],
+  adj: ["남·중 단수", "여 단수", "남 복수", "여·중 복수"],
+  verb: ["eu", "tu", "el / ea", "noi", "voi", "ei / ele"],
+};
+const G_NAME = { m: "m 남성", f: "f 여성", n: "n 중성" };
+
+/* ---------- build base items from the book ---------- */
+const base = [];
+DATA.nouns.forEach((r, i) => base.push({ id: "n" + i, type: "noun", ro: r[0], g: r[1], forms: [r[0], r[2], r[3], r[4]], ko: r[5], lesson: r[6], note: r[7] }));
+DATA.adjs.forEach((r, i) => base.push({ id: "a" + i, type: "adj", ro: r[0] !== "—" ? r[0] : r[2], forms: [r[0], r[1], r[2], r[3]], ko: r[4], lesson: r[5], note: r[6] }));
+DATA.verbs.forEach((r, i) => base.push({ id: "v" + i, type: "verb", ro: r[0], forms: r[1], ko: r[2], lesson: r[3], note: r[4] }));
+DATA.other.forEach((r, i) => base.push({ id: "o" + i, type: "other", ro: r[0], ko: r[1], cat: r[2], lesson: r[3] }));
+
+let mine = [];
+const state = { tab: "noun", q: "", lesson: "all", genders: new Set(), hideKo: false, editing: null };
+try { const s = JSON.parse(localStorage.getItem("ro-vocab-ui") || "{}"); if (s.tab) state.tab = s.tab; if (s.hideKo) state.hideKo = true; } catch (e) {}
+function saveUi() { try { localStorage.setItem("ro-vocab-ui", JSON.stringify({ tab: state.tab, hideKo: state.hideKo })); } catch (e) {} }
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fold = (s) => String(s ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ş/g, "s").replace(/ţ/g, "t");
+
+function allItems() { return base.concat(mine); }
+
+/* bold the part of a form that differs from the dictionary word */
+function hl(word, form) {
+  if (!form || form === "—") return '<span>—</span>';
+  let p = 0;
+  while (p < word.length && p < form.length && word[p] === form[p]) p++;
+  if (p === form.length && p === word.length) return "<b>" + esc(form) + "</b>";
+  if (p < 2) return "<b>" + esc(form) + "</b>";
+  return esc(form.slice(0, p)) + "<b>" + esc(form.slice(p)) + "</b>";
+}
+
+function lessonLabel(l) { return l === "mine" || l === "" || l == null ? "내 단어" : l + "과"; }
+
+function filtered() {
+  const q = fold(state.q.trim());
+  return allItems().filter((it) => {
+    if (it.type !== state.tab) return false;
+    if (state.lesson === "mine" && !it.mine) return false;
+    if (state.lesson !== "all" && state.lesson !== "mine" && String(it.lesson) !== String(state.lesson)) return false;
+    if (state.tab === "noun" && state.genders.size && !state.genders.has(it.g)) return false;
+    if (q) {
+      const hay = fold([it.ro, it.ko, it.note, it.cat].concat(it.forms || []).join(" "));
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderTabs() {
+  const counts = {};
+  allItems().forEach((it) => { counts[it.type] = (counts[it.type] || 0) + 1; });
+  $("tabs").innerHTML = TYPES.map((t) =>
+    `<button role="tab" type="button" data-tab="${t.id}" aria-selected="${state.tab === t.id}">${t.name}<span class="cnt">${counts[t.id] || 0}</span></button>`
+  ).join("");
+}
+
+function renderFilters() {
+  const lessons = [...new Set(allItems().filter((i) => i.type === state.tab && !(i.mine && (i.lesson === "" || i.lesson == null))).map((i) => i.lesson))]
+    .filter((l) => l !== "" && l != null).sort((a, b) => Number(a) - Number(b));
+  const opts = [["all", "전체"]].concat(lessons.map((l) => [String(l), l + "과"]));
+  if (mine.some((m) => m.type === state.tab)) opts.push(["mine", "내가 추가한 단어"]);
+  $("lessonRow").innerHTML = '<span class="lbl">과</span>' + opts.map(([v, n]) =>
+    `<button class="chip" type="button" data-lesson="${esc(v)}" aria-pressed="${String(state.lesson) === v}">${esc(n)}</button>`).join("");
+  $("genderRow").hidden = state.tab !== "noun";
+  $("genderRow").innerHTML = '<span class="lbl">성</span>' + ["m", "f", "n"].map((g) =>
+    `<button class="chip g-${g}" type="button" data-g="${g}" aria-pressed="${state.genders.has(g)}">${G_NAME[g]}</button>`).join("");
+}
+
+function itemHtml(it) {
+  const badge = it.type === "noun" ? `<span class="g ${it.g}">${it.g}</span>` : it.type === "other" ? `<span class="g x">${esc(it.cat || "기타")}</span>` : "";
+  const meta = `<span class="meta">${esc(lessonLabel(it.mine && (it.lesson === "" || it.lesson == null) ? "mine" : it.lesson))}</span>`;
+  let forms = "";
+  if (it.forms && FORM_LABELS[it.type]) {
+    const labels = FORM_LABELS[it.type];
+    const ref = it.type === "verb" ? (it.forms[0] || "") : (it.forms[0] && it.forms[0] !== "—" ? it.forms[0] : it.ro);
+    forms = `<div class="forms${it.type === "verb" ? " six" : ""}">` + labels.map((k, i) =>
+      `<div><span class="k">${k}</span><span class="v">${it.type === "verb" ? esc(it.forms[i] || "—") : hl(ref, it.forms[i])}</span></div>`).join("") + "</div>";
+  }
+  const note = it.note ? `<div class="note">${esc(it.note)}</div>` : "";
+  const acts = it.mine ? `<div class="acts"><button class="btn" type="button" data-edit="${esc(it.id)}">수정</button><button class="btn danger" type="button" data-del="${esc(it.id)}">삭제</button></div>` : "";
+  return `<article class="item${it.mine ? " mine" : ""}" data-id="${esc(it.id)}">
+    <div class="head"><span class="ro" lang="ro">${esc(it.ro)}</span>${badge}<span class="ko">${esc(it.ko)}</span>${meta}</div>
+    ${forms}${note}${acts}</article>`;
+}
+
+function render() {
+  renderTabs(); renderFilters();
+  document.body.classList.toggle("hide-ko", state.hideKo);
+  $("hideKo").setAttribute("aria-pressed", state.hideKo);
+  const items = filtered();
+  $("count").textContent = items.length + "개 단어";
+  $("list").innerHTML = items.length ? items.map(itemHtml).join("")
+    : `<div class="empty">조건에 맞는 단어가 없어요.<br>위의 <b>+ 단어 추가</b>로 새 단어를 넣을 수 있어요.</div>`;
+}
+
+/* ---------- events ---------- */
+$("tabs").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-tab]"); if (!b) return;
+  state.tab = b.dataset.tab; state.lesson = "all"; state.genders.clear(); saveUi(); render();
+});
+$("lessonRow").addEventListener("click", (e) => { const b = e.target.closest("[data-lesson]"); if (!b) return; state.lesson = b.dataset.lesson; render(); });
+$("genderRow").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-g]"); if (!b) return;
+  const g = b.dataset.g; state.genders.has(g) ? state.genders.delete(g) : state.genders.add(g); render();
+});
+$("q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
+$("hideKo").addEventListener("click", () => { state.hideKo = !state.hideKo; saveUi(); render(); });
+$("list").addEventListener("click", (e) => {
+  const ed = e.target.closest("[data-edit]");
+  if (ed) { openPanel(mine.find((m) => m.id === ed.dataset.edit)); return; }
+  const del = e.target.closest("[data-del]");
+  if (del) {
+    if (del.dataset.armed) { removeWord(del.dataset.del); return; }
+    del.dataset.armed = "1"; del.textContent = "정말 삭제?";
+    setTimeout(() => { if (del.isConnected) { delete del.dataset.armed; del.textContent = "삭제"; } }, 3000);
+    return;
+  }
+  if (state.hideKo) { const it = e.target.closest(".item"); if (it) it.classList.toggle("show"); }
+});
+
+/* ---------- add / edit panel ---------- */
+function fieldDefs(type) {
+  if (type === "noun") return [["단수 (사전형)", "ex: scaun"], ["복수", "ex: scaune"], ["단수 + 정관사", "ex: scaunul"], ["복수 + 정관사", "ex: scaunele"]];
+  if (type === "adj") return [["남·중 단수", "ex: frumos"], ["여 단수", "ex: frumoasă"], ["남 복수", "ex: frumoși"], ["여·중 복수", "ex: frumoase"]];
+  if (type === "verb") return [["부정사", "ex: a citi"], ["eu", ""], ["tu", ""], ["el / ea", ""], ["noi", ""], ["voi", ""], ["ei / ele", ""]];
+  return [["단어 / 표현", "ex: încă"]];
+}
+function buildFields(values) {
+  const type = $("f-type").value;
+  $("w-g").hidden = type !== "noun";
+  $("w-cat").hidden = type !== "other";
+  $("guessBtn").hidden = type !== "noun";
+  $("guessHint").textContent = type === "noun" ? "복수형은 직접 적어 주세요. 정관사형은 규칙대로 추정할 수 있지만 예외가 있으니 확인하세요." : "";
+  $("formFields").innerHTML = fieldDefs(type).map(([l, ph], i) =>
+    `<label>${l}<input class="ro-in" id="ff-${i}" lang="ro" autocomplete="off" placeholder="${esc(ph)}" value="${esc(values ? values[i] || "" : "")}"></label>`).join("");
+}
+function openPanel(item) {
+  state.editing = item ? item.id : null;
+  $("panelTitle").textContent = item ? "단어 수정" : "단어 추가";
+  $("f-type").value = item ? item.type : state.tab;
+  $("f-g").value = item && item.g ? item.g : "m";
+  $("f-lesson").value = item && item.lesson != null ? item.lesson : "";
+  $("f-cat").value = item && item.cat ? item.cat : "";
+  $("f-ko").value = item ? item.ko || "" : "";
+  $("f-note").value = item ? item.note || "" : "";
+  const vals = item ? (item.type === "verb" ? [item.ro].concat(item.forms || []) : item.type === "other" ? [item.ro] : item.forms) : null;
+  buildFields(vals);
+  $("saveStatus").textContent = "";
+  $("panel").hidden = false;
+  $("ff-0").focus();
+}
+$("addBtn").addEventListener("click", () => openPanel(null));
+$("cancelBtn").addEventListener("click", () => { $("panel").hidden = true; state.editing = null; });
+$("f-type").addEventListener("change", () => buildFields(null));
+
+function guessDef(sg, g) {
+  if (!sg) return "";
+  if (g === "f") {
+    if (/ea$/.test(sg)) return sg + "ua";
+    if (/a$/.test(sg)) return sg + "ua";
+    if (/ă$/.test(sg)) return sg.slice(0, -1) + "a";
+    if (/ie$/.test(sg)) return sg.slice(0, -1) + "a";
+    if (/e$/.test(sg)) return sg + "a";
+    return sg + "a";
+  }
+  if (/e$/.test(sg)) return sg + "le";
+  if (/u$/.test(sg)) return sg + "l";
+  return sg + "ul";
+}
+function guessDefPl(pl, g) { if (!pl) return ""; return g === "m" ? pl + "i" : pl + "le"; }
+$("guessBtn").addEventListener("click", () => {
+  const g = $("f-g").value, sg = $("ff-0").value.trim(), pl = $("ff-1").value.trim();
+  if (!$("ff-2").value.trim()) $("ff-2").value = guessDef(sg, g);
+  if (!$("ff-3").value.trim() && pl) $("ff-3").value = guessDefPl(pl, g);
+  $("saveStatus").textContent = pl ? "추정값을 넣었어요. 확인 후 저장하세요." : "복수형을 먼저 적으면 복수 정관사형도 채워 드려요.";
+});
+
+let db = null, col = null;
+$("saveBtn").addEventListener("click", async () => {
+  const type = $("f-type").value;
+  const vals = fieldDefs(type).map((_, i) => ($("ff-" + i).value || "").trim());
+  if (!vals[0]) { $("saveStatus").textContent = "첫 칸(단어)을 적어 주세요."; return; }
+  const lessonRaw = $("f-lesson").value.trim();
+  const doc = { type, ko: $("f-ko").value.trim(), note: $("f-note").value.trim(), lesson: lessonRaw === "" ? null : (isNaN(+lessonRaw) ? lessonRaw : +lessonRaw), updatedAt: Date.now() };
+  if (type === "noun") { doc.ro = vals[0]; doc.g = $("f-g").value; doc.forms = vals.map((v) => v || "—"); }
+  else if (type === "adj") { doc.ro = vals[0]; doc.forms = vals.map((v) => v || "—"); }
+  else if (type === "verb") { doc.ro = vals[0]; doc.forms = vals.slice(1).map((v) => v || "—"); }
+  else { doc.ro = vals[0]; doc.cat = $("f-cat").value.trim() || "기타"; }
+  if (!col) { $("saveStatus").textContent = "저장소에 연결되지 않았어요. claude.ai에 로그인한 상태에서 다시 열어 주세요."; return; }
+  $("saveBtn").disabled = true; $("saveStatus").textContent = "저장 중…";
+  try {
+    if (state.editing) await col.doc(state.editing).set(doc);
+    else { doc.createdAt = Date.now(); await col.add(doc); }
+    $("saveStatus").textContent = "저장했어요: " + doc.ro;
+    const wasEditing = state.editing;
+    state.tab = type; state.editing = null;
+    if (wasEditing) { $("panel").hidden = true; }
+    else { buildFields(null); $("f-ko").value = ""; $("f-note").value = ""; $("ff-0").focus(); }
+    render();
+  } catch (e) {
+    $("saveStatus").textContent = "저장하지 못했어요 (" + (e && e.code ? e.code : "오류") + "). 이 단어장을 수정할 권한이 있는지 확인해 주세요.";
+  } finally { $("saveBtn").disabled = false; }
+});
+async function removeWord(id) {
+  if (!col) return;
+  try { await col.doc(id).delete(); } catch (e) { $("dbStatus").textContent = "삭제하지 못했어요."; }
+}
+
+$("copyMine").addEventListener("click", async () => {
+  const text = JSON.stringify(mine.map(({ id, mine: _m, ...rest }) => rest), null, 1);
+  try { await navigator.clipboard.writeText(text); $("dbStatus").textContent = "복사했어요."; }
+  catch (e) {
+    const ta = document.createElement("textarea"); ta.value = text; ta.style.width = "100%"; ta.rows = 6;
+    $("list").before(ta); ta.select(); $("dbStatus").textContent = "아래 상자의 내용을 복사하세요.";
+  }
+});
+
+/* ---------- shared store for words the user adds ---------- */
+render();
+(async () => {
+  const timer = setTimeout(() => { if (!col) $("dbStatus").textContent = "내 단어 저장소에 연결하지 못했어요. 교재 단어는 그대로 볼 수 있어요."; }, 10000);
+  try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (e) { db = null; }
+  if (!db) { clearTimeout(timer); $("dbStatus").textContent = "단어 추가는 claude.ai에 로그인해서 열었을 때 저장돼요."; return; }
+  col = db.collection("words");
+  col.onSnapshot((snap) => {
+    clearTimeout(timer);
+    mine = snap.docs.map((d) => Object.assign({}, d.data(), { id: d.id, mine: true })).filter((w) => w.ro && w.type)
+      .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+    $("dbStatus").textContent = mine.length ? "내가 추가한 단어 " + mine.length + "개" : "추가한 단어가 아직 없어요";
+    $("copyMine").hidden = !mine.length;
+    render();
+  }, (err) => { clearTimeout(timer); $("dbStatus").textContent = "내 단어를 불러오지 못했어요 (" + (err && err.code || "오류") + ")."; });
+})();
+</script>
